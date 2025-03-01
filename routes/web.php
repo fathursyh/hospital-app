@@ -6,6 +6,8 @@ use Livewire\Volt\Volt;
 
 Route::get('/', [GeneralController::class, 'index'])->name('home');
 Route::get('/about', [GeneralController::class, 'about'])->name('about');
+Route::get('/team', [GeneralController::class, 'team'])->name('team');
+Route::get('/services', [GeneralController::class, 'services'])->name('services');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

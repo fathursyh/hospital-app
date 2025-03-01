@@ -1,7 +1,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/x-icon" href="{{ URL::to('/') }}/icon.png">
-
+@php
+header("Cache-Control: public, max-age=800, s-maxage=3600");
+@endphp
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @fluxAppearance
 <script>

@@ -6,7 +6,7 @@
         <title>@yield('title', 'F-Hospital')</title>
         @include('partials.head')
     </head>
-    <body class="min-h-[80vh]">
+    <body class="min-h-[80vh] font-roboto overflow-x-hidden">
         @include('components.nav.web-navbar')
         <main>
             @yield('main')

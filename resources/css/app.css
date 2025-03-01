@@ -33,6 +33,7 @@
 @layer theme {
     .dark {
         @apply bg-zinc-800;
+        color: whitesmoke;
         --color-accent: var(--color-white);
         --color-accent-content: var(--color-white);
         --color-accent-foreground: var(--color-neutral-800);
