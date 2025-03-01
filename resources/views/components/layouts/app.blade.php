@@ -11,5 +11,6 @@
         <main>
             @yield('main')
         </main>
+        @include('components.composables.web-footer')
     </body>
 </html>
