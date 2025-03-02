@@ -2,11 +2,11 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse font-madimi-one">
             <x-app-logo-icon class="size-5 fill-current text-black dark:text-white" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">F-Hospital</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-800">F-Hospital</span>
         </a>
         <div class="flex gap-4 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <x-theme class="hidden md:block" />
-            <a type="button" href="{{ route('register') }}"
+            <a type="button" href="{{ route('booking') }}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 curp">
                 Book Now
             </a>

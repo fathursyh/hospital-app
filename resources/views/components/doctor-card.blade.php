@@ -1,5 +1,5 @@
 <div class="max-w-sm h-fit bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700" {{ $attributes }}>
-    <a href="{{ route('detail', [$doctor->id]) }}">
+    <a href="{{ route('detail', [$doctor->id]) }}   ">
         <img class="rounded-t-lg h-60 object-cover object-top w-full" src="{{ $doctor->avatar->avatar ?? null }}" alt="avatar" referrerpolicy="no-referrer" />
     </a>
     <div class="p-5">
