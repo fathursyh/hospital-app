@@ -22,4 +22,8 @@ class GeneralController extends Controller
     public function services() {
         return view('services', );
     }
+    public function detail(String $id) {
+        $user = User::with('avatar')->findOrFail($id);
+        return view('detail', compact('user'));
+    }
 }
