@@ -16,11 +16,8 @@ class GeneralController extends Controller
         return view('about');
     }
     public function team() {
-        // $data = Avatars::get();
-        $data = User::with('avatar')->get();
-        print($data[0]);
-        // dd($data);
-        // return view('team', compact('data'));
+        $data = User::with('avatar')->orderBy('birthyear')->get();
+        return view('team', compact('data'));
     }
     public function services() {
         return view('services', );

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Avatars;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +13,9 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
+    
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->count(2)->create();
-        Avatars::factory()->count(2)->create();
+        User::factory()->has(Avatars::factory())->count(6)->create();
     }
 }
