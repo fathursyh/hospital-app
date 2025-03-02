@@ -1,4 +1,5 @@
 import 'flowbite';
+import { Dismiss } from 'flowbite';
 
 var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -40,3 +41,21 @@ themeToggleBtn.addEventListener('click', function() {
     }
 
 });
+
+const $targetEl = document.getElementById('toast-success');
+// options object
+const options = {
+    transition: 'transition-opacity',
+    duration: 400,
+    timing: 'ease-out',
+};
+
+// instance options object
+const instanceOptions = {
+    id: 'toast-success',
+    override: true
+};
+const dismiss = new Dismiss($targetEl, null, options, instanceOptions);
+    setTimeout(() => {
+        dismiss.hide();
+    }, 4000);
