@@ -6,10 +6,18 @@
         </a>
         <div class="flex gap-4 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <x-theme class="hidden md:block" />
+            @auth()
+            <a type="button" href="{{ route('dashboard') }}"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 curp">
+            Dashboard
+        </a>
+            @endauth
+            @guest
             <a type="button" href="{{ route('booking') }}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 curp">
                 Book Now
             </a>
+            @endguest
             <button data-collapse-toggle="navbar-cta" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-cta" aria-expanded="false">
