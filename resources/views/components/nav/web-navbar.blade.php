@@ -42,6 +42,15 @@
                         underline
                         @endif">Services</a>
                 </li>
+                @auth
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 underline-offset-6">Logout</button>
+                    </form>
+                </li>
+                @endauth
             </ul>
         </div>
     </div>
