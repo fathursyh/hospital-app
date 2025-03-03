@@ -14,6 +14,11 @@
     @endsession
     @include('components.nav.dashboard-navbar')
     {{ $slot }}
+    <script>
+        @session('login')
+            alert('Welcome back, Doc!');
+        @endsession
+    </script>
 </body>
 
 </html>
