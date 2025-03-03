@@ -28,7 +28,7 @@ class BookForm extends Component
         $validated = $this->validate([
             'first_name' => 'required|string|max:100',
             'last_name' => 'nullable|string|max:100',
-            'email' => 'required|email:dns,rfc,spoof',
+            'email' => 'required|email:dns,rfc,spoof|unique:patients,email',
             'date' => 'required',
             'gender' => 'required|in:m,w',
             'phone' => 'required|min:10|max:13',
