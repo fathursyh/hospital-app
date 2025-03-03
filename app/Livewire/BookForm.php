@@ -31,10 +31,15 @@ class BookForm extends Component
             'email' => 'required|email:dns,rfc,spoof|unique:patients,email',
             'date' => 'required',
             'gender' => 'required|in:m,w',
-            'phone' => 'required|min:10|max:13',
+            'phone' => 'required|min:10|max:13|unique:patients,phone',
             'address' => 'required|string|min:8',
             'reason' => 'required|string',
-        ]);
+        ],
+        [
+            'email.unique' => 'Error validating your email.',
+            'phone.unique' => 'Error validating your phone number.',
+        ]
+    );
         $validated['fullname'] = $validated['first_name'] .' '. $validated['last_name'];
         Patient::create($validated);
         session()->flash('status', 'Appointment booked succesfully!');

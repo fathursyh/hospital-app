@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +15,7 @@ class DashboardController extends Controller
         return view('dashboard-appointments');
     }
     public function patients() {
-        return view('dashboard-patients');
+        $patients = Patient::latest()->get();
+        return view('dashboard-patients', compact('patients'));
     }
 }
