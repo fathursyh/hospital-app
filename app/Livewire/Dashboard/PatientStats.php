@@ -9,7 +9,7 @@ class PatientStats extends Component
 {
     public $patients = 0;
     public function mount() {
-        $this->patients = Patient::count();
+        $this->patients = Patient::whereYear('date', '=', date('Y'))->count();
     }
     public function render()
     {
