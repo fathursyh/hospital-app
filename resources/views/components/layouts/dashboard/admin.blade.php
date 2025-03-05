@@ -14,6 +14,8 @@
     @endsession
     @include('components.nav.dashboard-navbar')
     {{ $slot }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @stack('admin-scripts')
     <script>
         @session('login')
             alert('Welcome back, Doc!');

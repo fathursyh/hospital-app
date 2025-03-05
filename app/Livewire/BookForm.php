@@ -17,10 +17,6 @@ class BookForm extends Component
     public $reason;
     protected $listeners = ['dateSelected' => 'updateDate'];
 
-    public function updateDate($date)
-    {
-        $this->date = $date;
-    }
     public function submit()
     {
         $this->first_name = trim($this->first_name);
@@ -38,8 +34,9 @@ class BookForm extends Component
         [
             'email.unique' => 'Error validating your email.',
             'phone.unique' => 'Error validating your phone number.',
-        ]
-    );
+            ]
+        );
+        // dd($validated['date'])
         $validated['fullname'] = $validated['first_name'] .' '. $validated['last_name'];
         Patient::create($validated);
         session()->flash('status', 'Appointment booked succesfully!');
