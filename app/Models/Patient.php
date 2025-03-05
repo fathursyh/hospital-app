@@ -20,6 +20,7 @@ class Patient extends Model
         'phone',
         'address',
         'reason',
+        'status',
     ];
 
 }

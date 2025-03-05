@@ -22,7 +22,7 @@ class BookingStats extends Component
         $months = array_reverse($months);
         array_push($months, (new DateTime())->modify('+1 months')->format('Y-m-d'));
         for($i = 0; $i < 4; $i++){
-            $month = Patient::whereBetween(DB::raw('DATE(date)'), [$months[$i], $months[$i+1]])->count();
+            $month = Patient::whereBetween(DB::raw('DATE(date)'), [$months[$i], $months[$i+1]])->where('status', '=', 'done')->count();
             array_push($this->data, $month);
         }
         unset($months);
