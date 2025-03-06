@@ -21,7 +21,7 @@ class PatientStats extends Component
     }
     public function render()
     {
-        $latest = Patient::latest()->whereNotBetween('status', ['done', 'taken'])->limit(4)->select('fullname', 'date')->get();
+        $latest = Patient::latest()->whereNotBetween('status', ['done', 'taken'])->limit(4)->select('fullname', 'date', 'id_patient')->get();
         return view('livewire.dashboard.patient-stats', [
             'latest' => $latest
         ]);

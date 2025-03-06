@@ -7,7 +7,7 @@
         <h5 class="lg:text-2xl text-lg mb-2">Latest Patients</h5>
         <div class="w-full h-full flex flex-col gap-1">
             @foreach ($latest as $item)
-            <a href="/">
+            <a href="{{ route('patient-detail', $item->id_patient) }}">
                 <div class="grid grid-cols-2 divide-x-2 bg-white dark:bg-zinc-800 border rounded hover:bg-blue-100 dark:hover:bg-blue-900">
                     <p class="py-2 px-4 flex items-center">{{ $item->fullname }}</p>
                     <p class="py-2 px-4 flex items-center">{{ date_create($item->date)->format('l, d F') }}</p>

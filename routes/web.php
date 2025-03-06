@@ -15,8 +15,9 @@ Route::get('/booking', [GeneralController::class, 'booking'])->name('booking')->
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard-index');
-    Route::get('dashboard/appointments', [DashboardController::class, 'appointments'])->name('dashboard-appointments');
-    Route::get('dashboard/patients', [DashboardController::class, 'patients'])->name('dashboard-patients');
+    Route::get('/dashboard/appointments', [DashboardController::class, 'appointments'])->name('dashboard-appointments');
+    Route::get('/dashboard/patients', [DashboardController::class, 'patients'])->name('dashboard-patients');
+    Route::get('/dashboard/patients/{id}', [DashboardController::class, 'patientDetail'])->name('patient-detail');
 
 });
 
