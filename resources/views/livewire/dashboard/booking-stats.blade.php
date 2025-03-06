@@ -1,14 +1,8 @@
-<section class="w-full h-full grid place-items-center bg-zinc-700 shadow rounded-lg rounded-br-none">
-    <div class="h-full overflow-x-hidden flex flex-col gap-4 items-center p-4">
-        <h3 class="md:text-xl text-base font-roboto font-bold text-gray-100">Patient Stats</h3>
-        <div class="h-full px-2">
-            @if ($data === [0, 0, 0, 0])
-                <p class="text-center text-red-400">No Data.</p>
-                @endif
-                <canvas id="bookingStats" class="h-full"></canvas>
-        </div>
+<section class="w-full h-full grid place-items-center bg-zinc-700 shadow rounded-lg rounded-br-none overflow-hidden">
+    <div class="h-52 xl:h-72 w-full p-4 grid place-items-center">
+        <canvas id="bookingStats" class="w-full"></canvas>
+
     </div>
-    {{-- {{ $days }} --}}
     @push('admin-scripts')
 
         <script>
@@ -29,7 +23,6 @@
                     }]
                 },
                 options: {
-                    responsive: true,
                     scales: {
                         y: {
                             beginAtZero: true,
