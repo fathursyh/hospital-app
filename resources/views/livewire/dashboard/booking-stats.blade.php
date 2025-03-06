@@ -1,8 +1,11 @@
 <section class="w-full h-full grid place-items-center bg-zinc-700 shadow rounded-lg rounded-br-none">
-    <div class="h-fit overflow-x-hidden flex flex-col gap-4 items-center p-4">
+    <div class="h-full overflow-x-hidden flex flex-col gap-4 items-center p-4">
         <h3 class="md:text-xl text-base font-roboto font-bold text-gray-100">Patient Stats</h3>
-        <div class="2xl:w-[40rem] xl:w-[28rem] w-[20rem] h-full px-2">
-            <canvas id="bookingStats" class="h-full"></canvas>
+        <div class="h-full px-2">
+            @if ($data === [0, 0, 0, 0])
+                <p class="text-center text-red-400">No Data.</p>
+                @endif
+                <canvas id="bookingStats" class="h-full"></canvas>
         </div>
     </div>
     {{-- {{ $days }} --}}

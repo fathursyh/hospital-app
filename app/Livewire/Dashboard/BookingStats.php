@@ -16,7 +16,7 @@ class BookingStats extends Component
         $months = [];
         for($i = 0; $i < 4; $i++){
             $prevs = (new DateTime())->modify("-$i months");
-            array_push($this->date, $prevs->format('M'));
+            array_push($this->date, $prevs->format('M y'));
             array_push($months, $prevs->format('Y-m-d'));
         }
         $months = array_reverse($months);
@@ -29,9 +29,6 @@ class BookingStats extends Component
         unset($month);
         $this->date = array_reverse($this->date);
 
-        return view('livewire.dashboard.booking-stats', [
-            'date' => $this->date,
-            'data' => $this->data
-        ]);
+        return view('livewire.dashboard.booking-stats');
     }
 }
