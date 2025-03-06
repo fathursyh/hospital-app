@@ -1,5 +1,5 @@
     <div id="toast-success"
-        class="flex items-center w-full md:max-w-sm max-w-xs p-4 mb-4 text-gray-500 bg-white font-roboto rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800 absolute md:top-[88vh] top-24 md:right-20 right-[50%] translate-x-[50%] md:translate-x-0"
+        class="flex items-center w-full md:max-w-sm max-w-xs p-4 mb-4 text-gray-500 bg-white font-roboto rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800 fixed md:top-[88vh] top-24 md:right-12 right-[50%] translate-x-[50%] md:translate-x-0"
         role="alert">
         <div
             class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">

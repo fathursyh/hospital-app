@@ -8,7 +8,7 @@
                 <h3 class="text-white font-madimi-one md:text-4xl text-2xl [text-shadow:_0_2px_1px_black]">Meet Our Professional Doctors</h3>
             </div>
             {{-- content --}}
-            <div class="w-full h-full row-span-4 shadow-lg border-gray-200 dark:border-zinc-900  border rounded-lg flex flex-row justify-center flex-wrap md:gap-2 gap-8 p-4">
+            <div class="w-full h-full row-span-4 shadow-lg border-gray-200 dark:border-zinc-900 border rounded-lg grid md:grid-cols-3 md:gap-4 gap-8 place-items-center p-4">
                 @foreach ($data as $item)
                 <x-doctor-card :doctor='$item' />
                 @endforeach
