@@ -14,13 +14,17 @@ class PatientTable extends Component
 
     public function takePatient($id) {
         Patient::where('id_patient', '=', $id)->update(['status' => 'taken']);
-        DoctorLog::create([Auth::user()->id, $id, null, 'taken']);
-
+        DoctorLog::create([
+            'id_doctor' => Auth::user()->id,
+            'id_patient' => $id,
+        ]);
+        $this->dispatch('showAlert', message: 'You succesfully take a patient!', status:'green');
     }
+
     public function render()
     {
         return view('livewire.patient-table', [
-            'patients' => Patient::latest()->orderBy('status')->paginate(10)
+            'patients' => Patient::orderBy('status')->latest()->paginate(10)
         ]);
     }
 }

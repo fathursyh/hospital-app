@@ -2,18 +2,18 @@
 
 namespace App\Livewire\Dashboard;
 
-use App\Models\Patient;
+use App\Models\DoctorLog;
 use Livewire\Component;
 
 class AppointmentStats extends Component
 {
     public $count = 0;
     public function mount() {
-        $this->count = 4;
+        $this->count = DoctorLog::count();
     }
     public function render()
     {
-        $latest = Patient::latest()->whereNotBetween('status', ['done', 'taken'])->limit(4)->select('fullname', 'date')->get();
+        $latest = DoctorLog::with('patient')->orderBy('taken_at', 'desc')->limit(5)->get();
         return view('livewire.dashboard.appointment-stats', compact('latest'));
     }
 }

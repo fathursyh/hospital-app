@@ -37,7 +37,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         }
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
-        Session::flash('login', 'success');
+        Session::flash('status', 'Login success!');
         $this->redirect('/dashboard');
     }
 

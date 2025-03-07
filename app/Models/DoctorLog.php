@@ -18,6 +18,11 @@ class DoctorLog extends Model
         'finished_at',
         'status',
     ];
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
     protected $hidden = [
         'id',
         'updated_at',
@@ -25,9 +30,9 @@ class DoctorLog extends Model
     ];
 
     public function doctor() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_doctor');
     }
     public function patient() {
-        return $this->hasOne(Patient::class);
+        return $this->belongsTo(Patient::class, 'id_patient');
     }
 }

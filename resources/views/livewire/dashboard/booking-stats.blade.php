@@ -3,7 +3,7 @@
         <canvas id="bookingStats" class="w-full"></canvas>
 
     </div>
-    @push('admin-scripts')
+    @push('scripts')
 
         <script>
             const ctx = document.getElementById('bookingStats');
@@ -36,7 +36,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: "F-Hospital Patients Handled"
+                            text: "F-Hospital Patients"
                         },
                         legend: {
                             display: false,

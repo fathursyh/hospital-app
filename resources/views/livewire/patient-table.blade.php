@@ -1,4 +1,9 @@
-<div>
+<div class="h-full">
+    @if (count($patients) < 1)
+        <div class="w-full h-full grid place-items-center font-bold text-xl text-gray-600 dark:text-gray-400">
+            <span>No Data.</span>
+        </div>
+    @else
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
@@ -30,8 +35,10 @@
                         {{ $patients->firstItem() + $loop->index }}
                     </td>
                     <th scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white hover:scale-110 transition-transform duration-150">
+                        <a href="{{ route('patient-detail', $patient->id_patient) }}" class="hover:underline underline-offset-4">
                             {{ $patient->fullname }}
+                        </a>
                     </th>
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ $patient->date}}
@@ -43,10 +50,10 @@
                         {{ $patient->reason }}
                     </td>
                     <td class="px-6 py-4 " >
-                        <button class="text-white bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800 {{ $patient->status === 'book' ? '' : ($patient->status === 'taken' ? 'bg-yellow-800' : 'bg-gray-700') }}" wire:confirm="Take this patient?" wire:click="takePatient('{{ $patient->id_patient }}')"
+                        <button class="hover:scale-110 cursor-pointer disabled:cursor-not-allowed text-white bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-blue-800 {{ $patient->status === 'book' ? '' : ($patient->status === 'taken' ? 'bg-yellow-800' : 'bg-gray-700') }}" wire:confirm="Take this patient?" wire:click="takePatient('{{ $patient->id_patient }}')"
                         @if ($patient->status !== 'book')
                             disabled
-                        @endif    
+                        @endif
                         >
                         {{ $patient->status }}
 
@@ -60,4 +67,6 @@
             {{ $patients->links() }}
         </div>
     </div>
+    @endif
+
 </div>

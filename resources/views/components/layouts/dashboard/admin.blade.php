@@ -10,17 +10,14 @@
 </head>
 
 <body>
-    @session('status')
-        <x-flash-message :message="session('status')" />
-    @endsession
     @include('components.nav.dashboard-navbar')
         {{ $slot }}
-    @stack('admin-scripts')
-    <script>
-        @session('login')
-            alert('Welcome back, Doc!');
-        @endsession
-    </script>
+
+        <livewire:alert />
+    @if (session()->has('status'))
+        <x-flash-message :message="session('status')" />
+    @endif
+    @stack('scripts')
 </body>
 
 </html>

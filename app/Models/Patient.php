@@ -22,5 +22,4 @@ class Patient extends Model
         'reason',
         'status',
     ];
-
 }
