@@ -30,8 +30,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
         event(new Registered(($user = User::create($validated))));
 
         Auth::login($user);
-
-        $this->redirect(route('dashboard-index', absolute: false), navigate: true);
+        Session::flash('login', 'success');
+        $this->redirect('/dashboard');
     }
 }; ?>
 

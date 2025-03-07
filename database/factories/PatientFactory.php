@@ -23,7 +23,7 @@ class PatientFactory extends Factory
             'email' => fake()->unique()->email(),
             'date' => fake()->dateTimeBetween('-1 month', '+1 month'),
             'gender' => $gender[rand(0,1)],
-            'phone' => fake()->phoneNumber(),
+            'phone' => fake('id_ID')->phoneNumber(),
             'address' => fake()->address(),
             'reason' => fake()->paragraph(2),
             'status' => $status[rand(0,2)]

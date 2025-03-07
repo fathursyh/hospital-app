@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->has(Avatars::factory())->count(6)->create();
-        Patient::factory()->count(35)->create();
+        Patient::factory()->count(70)->create();
     }
 }

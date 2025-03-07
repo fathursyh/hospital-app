@@ -57,5 +57,5 @@ const instanceOptions = {
 };
 const dismiss = new Dismiss($targetEl, null, options, instanceOptions);
     setTimeout(() => {
-        dismiss.hide();
+        if(dismiss) dismiss.hide();
     }, 4000);

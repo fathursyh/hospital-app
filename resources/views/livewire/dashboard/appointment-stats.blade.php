@@ -4,7 +4,6 @@
         <p class="text-gray-100 lg:text-xl text-lg">On-going Patients</p>
     </div>
     <div class="row-span-2 p-4">
-        <h5 class="lg:text-2xl text-lg mb-2">Patients</h5>
         <div class="w-full h-full flex flex-col gap-1">
             @foreach ($latest as $item)
             <a href="/">

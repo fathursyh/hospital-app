@@ -7,10 +7,10 @@ use Livewire\Component;
 
 class AppointmentLink extends Component
 {
-    public $count;
+    public $count = 0;
 
     public function mount() {
-        $this->count = Patient::count();
+        // $this->count = Patient::count();
     }
     public function render()
     {

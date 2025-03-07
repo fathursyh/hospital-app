@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->date('date');
             $table->enum('gender', ['m', 'w']);
-            $table->string('phone', 15);
+            $table->string('phone', 20);
             $table->string('address', 255);
             $table->longText('reason');
             $table->enum('status', ['book', 'taken', 'done'])->default('book');

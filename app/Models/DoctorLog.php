@@ -18,6 +18,11 @@ class DoctorLog extends Model
         'finished_at',
         'status',
     ];
+    protected $hidden = [
+        'id',
+        'updated_at',
+        'created_at'
+    ];
 
     public function doctor() {
         return $this->belongsTo(User::class);

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F-hospital - {{ Auth::user()->name }}</title>
     @include('partials.head')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,6 @@
     @endsession
     @include('components.nav.dashboard-navbar')
         {{ $slot }}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @stack('admin-scripts')
     <script>
         @session('login')
