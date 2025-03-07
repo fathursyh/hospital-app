@@ -8,7 +8,7 @@ use Livewire\Component;
 class Alert extends Component
 {
     public $message;
-    public $status = 'green';
+    public $status = 'red';
     public $isShow = false;
 
     #[On('showAlert')]

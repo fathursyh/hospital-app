@@ -13,7 +13,7 @@ class AppointmentStats extends Component
     }
     public function render()
     {
-        $latest = DoctorLog::with('patient')->orderBy('taken_at', 'desc')->limit(5)->get();
+        $latest = DoctorLog::with('patient')->orderBy('taken_at', 'desc')->limit(4)->get();
         return view('livewire.dashboard.appointment-stats', compact('latest'));
     }
 }

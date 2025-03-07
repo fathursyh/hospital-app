@@ -63,7 +63,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="2xl:w-[40%] lg:w-1/2 ms-auto my-4">
+        <div class="max-w-screen ms-auto my-4">
             {{ $patients->links() }}
         </div>
     </div>
