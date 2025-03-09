@@ -13,10 +13,10 @@ class AppointmentLink extends Component
     #[On('showAlert')]
 
     public function mount() {
-        $this->count = DoctorLog::where('id_doctor', '=', Auth::user()->id)->count();
+        $this->count = DoctorLog::where('id_doctor', '=', Auth::user()->id)->where('status', '=' , 'progress')->count();
     }
     public function render()
     {
-        return view('livewire.dashboard.nav.appointment-link', ['count' => $this->count]);
+        return view('livewire.dashboard.nav.appointment-link');
     }
 }

@@ -10,14 +10,18 @@ use Livewire\Component;
 class AppointmentList extends Component
 {
     public function finishPatient($id) {
-        Patient::where('id_patient', '=', $id)->limit(1)->update([
+        Patient::where('id_patient', '=', $id)->update([
             "status" => "done"
         ]);
+        DoctorLog::where('id_patient', '=', $id)->update([
+            "status" => "finished"
+        ]);
+        $this->dispatch('showAlert', message: 'You succesfully treating a patient!', status:'green');
     }
     public function render()
     {
         return view('livewire.appointment-list', [
-            'list' => DoctorLog::with('patient')->where('id_doctor', '=', Auth::user()->id)->orderBy('taken_at')->paginate(10)
+            'list' => DoctorLog::with('patient')->where('id_doctor', '=', Auth::user()->id)->where('status', '=', 'progress')->orderBy('taken_at')->get()
         ]);
     }
 }
