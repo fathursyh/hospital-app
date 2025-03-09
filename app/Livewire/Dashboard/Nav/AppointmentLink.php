@@ -2,15 +2,18 @@
 
 namespace App\Livewire\Dashboard\Nav;
 
-use App\Models\Patient;
+use App\Models\DoctorLog;
+use Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class AppointmentLink extends Component
 {
     public $count = 0;
+    #[On('showAlert')]
 
     public function mount() {
-        // $this->count = Patient::count();
+        $this->count = DoctorLog::where('id_doctor', '=', Auth::user()->id)->count();
     }
     public function render()
     {

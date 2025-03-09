@@ -4,10 +4,10 @@
         <p class="text-gray-100 lg:text-xl text-lg">Your Patients</p>
     </div>
     <div class="row-span-2 p-4">
-        <div class="w-full h-full flex flex-col justify-evenly">
+        <div class="w-full h-full flex flex-col justify-start">
             @foreach ($latest as $item)
             <a href="/">
-                <div class="grid grid-cols-2 divide-x-2 bg-white dark:bg-zinc-800 border rounded hover:bg-blue-100 dark:hover:bg-blue-900">
+                <div class="grid grid-cols-2 divide-x-2 {{ date_create($item->patient->date) < date_create() ? 'bg-red-300 dark:bg-red-800/60' : 'bg-white dark:bg-zinc-800' }} border rounded hover:bg-blue-100 dark:hover:bg-blue-900">
                     <p class="py-2 px-4 flex items-center">{{ $item->patient->fullname }}</p>
                     <p class="py-2 px-4 flex items-center">{{ date_create($item->patient->date)->format('l, d F') }}</p>
                 </div>

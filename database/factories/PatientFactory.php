@@ -21,7 +21,7 @@ class PatientFactory extends Factory
         return [
             'fullname' => fake()->name(),
             'email' => fake()->unique()->email(),
-            'date' => fake()->dateTimeBetween('-1 month', '+1 month'),
+            'date' => fake()->dateTimeBetween('today', '+1 month'),
             'gender' => $gender[rand(0,1)],
             'phone' => fake('id_ID')->phoneNumber(),
             'address' => fake()->address(),

@@ -8,13 +8,13 @@ use Livewire\Component;
 class Alert extends Component
 {
     public $message;
-    public $status = 'red';
+    public $status = '';
     public $isShow = false;
 
     #[On('showAlert')]
     public function showAlert($status, $message)
     {
-        $this->status = $status;
+        $this->status = $status === 'green' ? 'bg-green-700' : 'bg-red-700';
         $this->message = $message;
         $this->isShow = true;
     }

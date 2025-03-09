@@ -1,5 +1,5 @@
 <div id="alertMessage"
-    class="p-4 py-6 text-sm font-semibold rounded-lg text-white {{ $status === 'green'? 'bg-green-700' : 'bg-red-700' }} fixed w-screen z-50 bottom-0 text-center transition duration-300 @if (!$isShow) opacity-0 @endif pointer-events-none"
+    class="p-4 py-6 text-sm font-semibold rounded-lg text-white {{ $status }} fixed w-screen z-50 bottom-0 text-center transition duration-300 @if (!$isShow) opacity-0 @endif pointer-events-none"
     role="alert">
     {{ $message }}
 </div>
