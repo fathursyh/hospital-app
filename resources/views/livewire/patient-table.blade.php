@@ -15,6 +15,9 @@
                         Full Name
                     </th>
                     <th scope="col" class="px-6 py-3 bg-gray-600 text-white dark:bg-gray-800">
+                        Gender
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-gray-600 text-white dark:bg-gray-800">
                         Date
                     </th>
                     <th scope="col" class="px-6 py-3 bg-gray-600 text-white dark:bg-gray-800">
@@ -40,6 +43,9 @@
                             {{ $patient->fullname }}
                         </a>
                     </th>
+                    <td class="px-6 py-4 whitespace-nowrap {{ $patient->gender === 'm' ? 'text-green-600 dark:text-green-500' : 'text-pink-400' }}">
+                        {{ $patient->gender === 'm' ? 'Male' : 'Female'}}
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ $patient->date}}
                     </td>
