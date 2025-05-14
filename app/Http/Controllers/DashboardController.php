@@ -15,7 +15,10 @@ class DashboardController extends Controller
         return view('dashboard-appointments');
     }
     public function patients() {
-        $patients = Patient::latest()->get();
-        return view('dashboard-patients', compact('patients'));
+        return view('dashboard-patients');
+    }
+    public function patientDetail($id) {
+        $patient = Patient::find($id);
+        return view('dashboard-pages.patient-detail', compact('patient'));
     }
 }

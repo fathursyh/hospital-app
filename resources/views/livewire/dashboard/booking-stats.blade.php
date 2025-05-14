@@ -3,11 +3,11 @@
         <canvas id="bookingStats" class="w-full"></canvas>
 
     </div>
-    @push('admin-scripts')
+    @push('scripts')
 
         <script>
             const ctx = document.getElementById('bookingStats');
-            Chart.defaults.color='white';
+            Chart.defaults.color = 'white';
             Chart.defaults.font.size = 16;
             Chart.defaults.borderColor = '#848abd';
             new Chart(ctx, {
@@ -18,7 +18,7 @@
                         label: 'Patient',
                         data: {!! json_encode($data) !!},
                         borderWidth: 1,
-                        backgroundColor: ['gray', 'gray', '#6fa87f', '#4fc26e'],
+                        backgroundColor: ['gray', 'gray', '#919191', '#4fc26e'],
                         color: '#a8327b',
                     }]
                 },
@@ -34,6 +34,10 @@
                         }
                     },
                     plugins: {
+                        title: {
+                            display: true,
+                            text: "F-Hospital Patients"
+                        },
                         legend: {
                             display: false,
                         },

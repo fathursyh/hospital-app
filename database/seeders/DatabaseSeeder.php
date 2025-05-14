@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Avatars;
+use App\Models\Patient;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->has(Avatars::factory())->count(6)->create();
+        Patient::factory()->count(70)->create();
     }
 }

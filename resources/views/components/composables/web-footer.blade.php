@@ -1,8 +1,8 @@
-<footer class="bg-gray-200/80 dark:bg-zinc-900 font-roboto">
-    <div class="mx-auto w-full max-w-screen-xl">
-      <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+<footer class="bg-gray-200/80 dark:bg-zinc-900 font-roboto text-sm">
+    <div class="w-full max-w-4xl ps-10">
+      <div class="grid grid-cols-1 gap-2 px-4 py-6 lg:py-8 md:grid-cols-3">
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+            <h2 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                 <li class="mb-4">
                     <a href="/about" class=" hover:underline">About</a>
@@ -19,7 +19,7 @@
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+            <h2 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                 <li class="mb-4">
                     <a href="#" class="hover:underline">Discord Server</a>
@@ -36,7 +36,7 @@
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">For Staff</h2>
+            <h2 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">For Staff</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                 <li class="mb-4">
                     <a href="{{ route('login') }}" class="hover:underline">Log in</a>
@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="px-4 py-6 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="/">F-Hospital</a>. All Rights Reserved.
+        <span class= text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="/">F-Hospital</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
             <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">

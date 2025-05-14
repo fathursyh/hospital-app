@@ -7,8 +7,7 @@ use Livewire\Component;
 
 class BookForm extends Component
 {
-    public $first_name = '';
-    public $last_name = '';
+    public $full_name = '';
     public $email = '';
     public $date;
     public $gender = 'm';
@@ -19,11 +18,8 @@ class BookForm extends Component
 
     public function submit()
     {
-        $this->first_name = trim($this->first_name);
-        $this->last_name = trim($this->last_name);
         $validated = $this->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'nullable|string|max:100',
+            'full_name' => 'required|string|max:100',
             'email' => 'required|email:dns,rfc,spoof|unique:patients,email',
             'date' => 'required',
             'gender' => 'required|in:m,w',
@@ -32,12 +28,12 @@ class BookForm extends Component
             'reason' => 'required|string',
         ],
         [
-            'email.unique' => 'Error validating your email.',
-            'phone.unique' => 'Error validating your phone number.',
+            'email.unique' => 'Email already exist.',
+            'phone.unique' => 'Phone number already exist.',
             ]
         );
         // dd($validated['date'])
-        $validated['fullname'] = $validated['first_name'] .' '. $validated['last_name'];
+        $validated['fullname'] = $validated['full_name'];
         Patient::create($validated);
         session()->flash('status', 'Appointment booked succesfully!');
         return redirect()->to('/');

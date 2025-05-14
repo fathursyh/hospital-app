@@ -17,8 +17,9 @@
         @yield('main')
 
     </main>
-    @include('components.composables.web-footer')
 
+    @include('components.composables.web-footer')
+@stack('scripts')
 </body>
 
 </html>

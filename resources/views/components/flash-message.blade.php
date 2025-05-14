@@ -22,3 +22,7 @@
             </svg>
         </button>
     </div>
+
+    @push('scripts')
+        @vite(['resources/js/toast.js'])
+    @endpush

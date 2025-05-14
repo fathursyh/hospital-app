@@ -5,7 +5,7 @@
     @section('main')
         <div class="mt-18 w-screen">
             <div class="container max-w-screen-xl mx-auto my-10 px-4">
-                <section class="bg-white dark:bg-zinc-900 shadow-md rounded-lg p-6">
+                <section class="bg-white dark:bg-zinc-900 shadow-md rounded-lg p-6 px-10">
                     <img src="https://plus.unsplash.com/premium_photo-1681842978092-3af31637042a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="doctor and pasien image from unsplash" referrerpolicy="no-referrer" class="w-full h-44 md:h-80 object-cover overflow-hidden mb-4 rounded" style="object-position: 0px -4rem">
                     <h2 class="text-3xl font-semibold">About Us</h2>
                     <p class="mt-4">
@@ -19,16 +19,16 @@
                     </p>
                 </section>
 
-                <section class="mt-10 bg-white dark:bg-zinc-900 shadow-md rounded-lg p-6">
+                <section class="mt-10 bg-white dark:bg-zinc-900 shadow-md rounded-lg p-6 px-10">
                     <h2 class="text-3xl font-semibold ">Our Mission</h2>
-                    <p class="mt-4">
+                    <p class="mt-4 ps-6">
                         Our mission is to provide comprehensive, patient-centered healthcare that improves the health and well-being of our community. We strive to create a safe and welcoming environment for all patients and their families.
                     </p>
                 </section>
 
-                <section class="mt-10 bg-white dark:bg-zinc-900 shadow-md rounded-lg p-6">
+                <section class="mt-10 bg-white dark:bg-zinc-900 shadow-md rounded-lg p-6 px-10">
                     <h2 class="text-3xl font-semibold ">Our Values</h2>
-                    <ul class="mt-4 list-disc list-outside ps-4">
+                    <ul class="mt-4 list-disc list-outside ps-8">
                         <li>Compassion: We treat our patients with kindness and empathy.</li>
                         <li>Integrity: We uphold the highest standards of professionalism and ethics.</li>
                         <li>Excellence: We are committed to continuous improvement and innovation.</li>
