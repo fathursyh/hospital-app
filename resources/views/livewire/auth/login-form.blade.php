@@ -6,8 +6,9 @@
         type="email"
         placeholder="name@company.com"
         wire:model.defer="email"
+        autofocus
     />
-        <x-ui.custom-input
+    <x-ui.custom-input
         id="password"
         label="Password"
         name="password"

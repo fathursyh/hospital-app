@@ -1,4 +1,4 @@
-<section class="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6">
+<section class="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6" data-aos="fade-up">
     <div class="mx-auto mb-8 max-w-screen-md text-center lg:mb-16">
         <h2 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900">
             What Healthcare Professionals Say

@@ -1,5 +1,5 @@
 <section id="about" class="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
-    <div class="mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:grid lg:grid-cols-2 lg:px-6 lg:py-16">
+    <div class="mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:grid lg:grid-cols-2 lg:px-6 lg:py-16" data-aos="fade-up">
         <div class="font-light text-gray-500 sm:text-lg">
             <h2 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900">
                 Revolutionizing Healthcare Management

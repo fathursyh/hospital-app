@@ -1,4 +1,4 @@
-  <section class="bg-blue-50 py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+  <section class="bg-blue-50 py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6" data-aos="zoom-out">
         <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
                 Trusted by Healthcare Professionals
