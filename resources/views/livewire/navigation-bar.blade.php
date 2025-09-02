@@ -9,21 +9,23 @@
                 <x-ui.button>Sign In</x-ui.button>
             </a>
             <a href="/sign-up">
-                <x-ui.button type="outline">Get Started</x-ui.button>
+                <x-ui.button buttonType="outline">Get Started</x-ui.button>
             </a>
         </div>
         <div class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto" id="mobile-menu-2">
-            <ul class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
-                <li>
-                    <a href="#features" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700">Features</a>
-                </li>
-                <li>
-                    <a href="#about" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700">About</a>
-                </li>
-                <li>
-                    <a href="#pricing" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700">Pricing</a>
-                </li>
-            </ul>
+            @if (request()->is('/'))
+                <ul class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
+                    <li>
+                        <a href="#features" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700">Features</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700">About</a>
+                    </li>
+                    <li>
+                        <a href="#pricing" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700">Pricing</a>
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
 </nav>

@@ -17,10 +17,16 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    private const ROLE_SUPERADMIN = 'superadmin';
+    private const ROLE_ADMIN = 'admin';
+    private const ROLE_DOCTOR = 'doctor';
+    private const ROLE_PATIENT = 'patient';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -32,6 +38,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function hasAnyRole($roles)
+    {
+        return in_array($this->role, $roles);
+    }
 
     /**
      * Get the attributes that should be cast.

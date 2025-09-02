@@ -1,9 +1,9 @@
-<section id="pricing" class="mx-auto max-w-screen-xl gradient-bg px-4 py-8 lg:px-6 lg:py-16" data-aos="fade-up">
+<section id="pricing" class="mx-auto max-w-screen-xl gradient-bg px-4 py-8 lg:px-6 lg:py-16 rounded" data-aos="fade-up">
     <div class="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
         <h2 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-50">
             Choose Your Plan
         </h2>
-        <p class="mb-5 font-light text-gray-500 sm:text-xl">
+        <p class="mb-5 font-light text-gray-200 sm:text-xl">
             Flexible pricing options to fit hospitals of all sizes
         </p>
     </div>

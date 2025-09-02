@@ -1,7 +1,5 @@
 @extends('layouts.app-layout')
-@section('title')
-    Home
-@endsection
+@section('title', 'Home')
 @section('main-content')
     <!-- Hero Section -->
     @include('components.landings.hero-section')

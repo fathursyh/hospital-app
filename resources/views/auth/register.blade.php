@@ -1,5 +1,5 @@
 @extends('layouts.auth-layout')
-@section('title')Register @endsection
+@section('title', 'Register')
 @section('main-content')
     <div class="flex min-h-screen flex-col justify-center bg-gray-50 py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md fade-up">
@@ -13,7 +13,7 @@
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 Do you have an account?
-                <a href="" class="font-medium text-blue-600 hover:text-blue-500">
+                <a href="/sign-up" class="font-medium text-blue-600 hover:text-blue-500">
                     Login here
                 </a>
             </p>
