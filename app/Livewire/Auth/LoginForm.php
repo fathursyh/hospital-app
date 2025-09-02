@@ -12,7 +12,7 @@ class LoginForm extends Component
     public $remember = false;
 
     protected $rules = [
-        'email' => 'required|email',
+        'email' => 'required|email:rfc,dns',
         'password' => 'required|min:8',
     ];
 

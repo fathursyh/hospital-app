@@ -17,7 +17,7 @@
             :type="show ? 'text' : '{{ $type }}'" id="{{ $id }}" value="{{ $value }}"
             name="{{ $name }}">
         @if ($type === 'password')
-            <button type="button" class="grid flex-1 place-items-center bg-gray-500 shadow-md" @click="show = !show" title="Toggle password">
+            <button type="button" class="grid flex-1 place-items-center bg-gray-500 hover:bg-gray-600 shadow-md" @click="show = !show" title="Toggle password">
                 <template x-if="!show">
                     <!-- eye icon -->
                     <svg class="h-5 w-5 text-white" aria-hidden="true"
@@ -41,7 +41,6 @@
                         <path
                             d="m19.821 8.605-2.857 2.857a4.952 4.952 0 0 1-5.514 5.514l-1.785 1.785c.767.166 1.55.25 2.335.251 6.453 0 10-5.258 10-7 0-1.166-1.637-2.874-2.179-3.407Z" />
                     </svg>
-
                 </template>
             </button>
         @endif

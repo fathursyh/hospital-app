@@ -7,6 +7,7 @@
         placeholder="name@company.com"
         wire:model.defer="email"
         autofocus
+        wire:loading.disabled
     />
     <x-ui.custom-input
         id="password"
@@ -15,6 +16,7 @@
         type="password"
         placeholder="password"
         wire:model.defer="password"
+        wire:loading.disabled
     />
     <div class="flex items-center justify-between">
         <div class="flex items-start">

@@ -25,7 +25,7 @@
             easing: 'ease',
             once: true,
             mirror: false,
-            anchorPlacement: 'top-bottom',
+            anchorPlacement: 'center-bottom',
 
         });
     </script>
