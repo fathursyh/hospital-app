@@ -1,4 +1,4 @@
-  <section class="bg-blue-50 py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6" data-aos="zoom-out">
+  <section class="bg-gradient-to-b to-blue-100 py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6" data-aos="zoom-out">
         <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
                 Trusted by Healthcare Professionals
@@ -7,19 +7,19 @@
         <div class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-4">
             <div class="text-center">
                 <div class="text-3xl font-extrabold text-blue-600 mb-2" data-target="500" data-suffix="+">0</div>
-                <div class="text-sm">Hospitals Using</div>
+                <div class="text-sm font-medium">Hospitals Using</div>
             </div>
             <div class="text-center">
                 <div class="text-3xl font-extrabold text-green-600 mb-2" data-target="2000000" data-suffix="+" data-format="M">0</div>
-                <div class="text-sm">Patients Managed</div>
+                <div class="text-sm font-medium">Patients Managed</div>
             </div>
             <div class="text-center">
                 <div class="text-3xl font-extrabold text-purple-600 mb-2" data-target="99.9" data-suffix="%" data-decimal="1">0</div>
-                <div class="text-sm">Uptime</div>
+                <div class="text-sm font-medium">Uptime</div>
             </div>
             <div class="text-center">
                 <div class="text-3xl font-extrabold text-red-600 mb-2" data-target="24" data-suffix="/7">0</div>
-                <div class="text-sm">Support</div>
+                <div class="text-sm font-medium">Support</div>
             </div>
         </div>
     </section>

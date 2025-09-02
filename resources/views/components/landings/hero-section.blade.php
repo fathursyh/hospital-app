@@ -1,4 +1,5 @@
 <section
+    id="hero"
     class="bg-black/80 bg-[url('https://images.pexels.com/photos/4966406/pexels-photo-4966406.jpeg')] bg-cover bg-bottom bg-blend-multiply">
     <div class="mx-auto max-w-screen-xl px-4 py-12 text-center lg:px-12 lg:py-24">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl" data-aos="fade-up">

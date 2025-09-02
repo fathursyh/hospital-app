@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,18 +8,9 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::get('/', [GeneralController::class, 'landing'])->name('home');
 
-// Route::get('/about', function () {
-//     return view('about');
-// })->name('about');
-
 Route::middleware(['guest'])->group(function () {
-    Route::get('/sign-in', function () {
-        return view('auth.login');
-    })->name('login');
-
-    // Route::get('/register', function () {
-    //     return view('auth.register');
-    // })->name('register');
+    Route::get('/sign-in', [AuthController::class, 'login'])->name('login');
+    Route::get('/sign-up', [AuthController::class, 'register'])->name('register');
 
     // Route::get('/forgot-password', function () {
     //     return view('auth.forgot-password');
@@ -29,13 +21,11 @@ Route::middleware(['guest'])->group(function () {
     // })->name('password.reset');
 });
 /* buka ini per rute beres
-// Authentication Routes (Public)
 
 // Authenticated Routes (All user types)
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // Logout (available to all authenticated users)
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Common Dashboard Routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

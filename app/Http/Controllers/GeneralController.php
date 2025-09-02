@@ -9,7 +9,4 @@ class GeneralController extends Controller
     public function landing() {
         return view('landing');
     }
-    public function signIn() {
-        return view('sign-in');
-    }
 }

@@ -1,6 +1,6 @@
 <a href="/" title="Contact our whatsapp">
     <button
-        class="animate-float fixed bottom-6 right-6 rounded-full bg-green-600 p-4 text-center text-sm font-medium text-white shadow-md hover:bg-green-700 hover:shadow-xl">
+        class="rounded-full bg-green-600 p-4 text-center text-sm font-medium text-white shadow-md hover:bg-green-700 hover:shadow-xl">
         <svg class="h-8 w-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path fill="currentColor" fill-rule="evenodd"

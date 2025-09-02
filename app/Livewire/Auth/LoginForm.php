@@ -18,7 +18,7 @@ class LoginForm extends Component
 
     public function login()
     {
-        sleep(2);
+        sleep(1);
 
         $this->validate();
 
@@ -30,10 +30,11 @@ class LoginForm extends Component
         ) {
             session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
-        $this->addError('email', 'The provided credentials do not match our records.');
+        $this->addError('email', 'Invalid credentials.');
+        $this->addError('password', 'Invalid credentials.');
     }
     public function render()
     {

@@ -1,5 +1,7 @@
 @extends('layouts.app-layout')
-@section('title')Home @endsection
+@section('title')
+    Home
+@endsection
 @section('main-content')
     <!-- Hero Section -->
     @include('components.landings.hero-section')
@@ -21,5 +23,27 @@
 
     <!-- CTA Section -->
     @include('components.landings.cta-section')
-    @include('components.landings.whatsapp-button')
+
+    {{-- floating --}}
+    @include('components.landings.floating-buttons')
 @endsection
+
+<script>
+    function topButtonEvent() {
+        const hero = document.getElementById("hero");
+        const about = document.getElementById("about");
+        const topButton = document.getElementById("top-button");
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === "hero") topButton.classList.add("hidden");
+                    else topButton.classList.remove("hidden");
+                }
+            });
+        });
+
+        [hero, about].forEach((item) => observer.observe(item));
+    }
+    document.addEventListener('DOMContentLoaded', topButtonEvent);
+</script>
