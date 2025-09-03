@@ -5,7 +5,7 @@ use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GeneralController::class, 'landing'])->name('home');
-Route::get('/checkout', [GeneralController::class, 'checkout'])->name('home');
+Route::get('/checkout', [GeneralController::class, 'checkout'])->name('checkout');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/sign-in', [AuthController::class, 'login'])->name('login');

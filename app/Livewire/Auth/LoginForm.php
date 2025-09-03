@@ -18,7 +18,6 @@ class LoginForm extends Component
 
     public function login()
     {
-        sleep(1);
 
         $this->validate();
 

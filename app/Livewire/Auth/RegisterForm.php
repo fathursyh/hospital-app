@@ -36,7 +36,10 @@ class RegisterForm extends Component
 
         session()->regenerate();
 
-        return redirect()->intended('/');
+        return redirect()->intended('/dashboard')->with([
+            'status' => 'success',
+            'message' => 'Your account is registered successfully!'
+        ]);
     }
 
     public function render()

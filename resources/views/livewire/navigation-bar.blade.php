@@ -4,14 +4,21 @@
             <i class="fas fa-hospital mr-3 text-2xl text-blue-600"></i>
             <span class="self-center whitespace-nowrap text-xl font-semibold text-gray-900">F-Hospital</span>
         </a>
-        <div class="flex items-center gap-2 lg:order-2">
-            <a href="/sign-in">
-                <x-ui.button>Sign In</x-ui.button>
+        @auth
+            <a href="/dashboard" class="order-2">
+                <x-ui.button>Dashboard</x-ui.button>
             </a>
-            <a href="/sign-up">
-                <x-ui.button buttonType="outline">Get Started</x-ui.button>
-            </a>
-        </div>
+        @endauth
+        @guest
+            <div class="flex items-center gap-2 lg:order-2">
+                <a href="/sign-in">
+                    <x-ui.button>Sign In</x-ui.button>
+                </a>
+                <a href="/sign-up">
+                    <x-ui.button buttonType="outline">Get Started</x-ui.button>
+                </a>
+            </div>
+        @endguest
         <div class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto" id="mobile-menu-2">
             @if (request()->is('/'))
                 <ul class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
