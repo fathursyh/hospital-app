@@ -24,8 +24,14 @@
 </div>
 
 <script>
-    const alert = document.getElementById("app-alert");
-    alert.addEventListener("click", () => {
-        alert.style.display = "none";
+    const appAlert = document.getElementById("app-alert");
+    appAlert.addEventListener("click", () => {
+        appAlert.style.display = "none";
     });
+
+    if (appAlert.style.display !== 'none') {
+        setTimeout(() => {
+            appAlert.style.display = 'none';
+        }, 4000);
+    }
 </script>
