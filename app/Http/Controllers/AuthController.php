@@ -35,12 +35,8 @@ class AuthController extends Controller
                 return redirect()->route('superadmin.dashboard');
             case 'admin':
                 return redirect()->route('admin.dashboard');
-            case 'hospital':
-                return redirect()->route('hospital.dashboard');
             case 'doctor':
                 return redirect()->route('doctor.dashboard');
-            case 'patient':
-                return redirect()->route('patient.dashboard');
             default:
                 return redirect()->route('home');
         }

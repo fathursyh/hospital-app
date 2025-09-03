@@ -9,8 +9,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-    @include('components.navigations.sidebar-patient');
+<body class="bg-gray-100 dark:bg-gray-900">
+    <x-navigations.sidebar-index />
     <main class="md:ms-64">
         @yield('content')
     </main>

@@ -19,7 +19,7 @@
     </svg>
     <span class="sr-only">Info</span>
     <div>
-        <span class="font-medium capitalize">{{ $status }} alert!</span> {{ $message }}
+        <span class="font-medium capitalize">{{ $status }}!</span> {{ $message }}
     </div>
 </div>
 

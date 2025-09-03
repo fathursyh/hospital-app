@@ -1,6 +1,5 @@
 @extends('layouts.dashboard-layout')
-@section('title', 'Home')
+@section('title', 'Appointments')
 @section('content')
-    <p>dashboard</p>
-
+    <p>appointments</p>
 @endsection

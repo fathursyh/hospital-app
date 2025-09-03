@@ -23,7 +23,7 @@
             <li class="mb-4">
                 <a href="/"
                     class="group flex items-center rounded-lg p-2 text-base font-bold text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                    <svg class="h-6 w-6 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
                         <path fill-rule="evenodd"
@@ -35,8 +35,8 @@
             </li>
             {{-- menus --}}
             <li>
-                <a href="#"
-                    class="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ activeLink('patient/dashboard') }}">
+                <a href="{{ route('doctor.dashboard') }}"
+                    class="{{ activeLink('doctor/dashboard') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="currentColor" viewBox="0 0 24 24">
@@ -49,8 +49,8 @@
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ activeLink('patient/dashboard/appointments') }}">
+                <a href="{{ route('doctor.appointments') }}"
+                    class="{{ activeLink('doctor/dashboard/appointments') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="currentColor" viewBox="0 0 24 24">
@@ -63,8 +63,8 @@
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ activeLink('patient/dashboard/bills') }}">
+                <a href="{{ route('doctor.bills') }}"
+                    class="{{ activeLink('doctor/dashboard/bills') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@
         <ul class="mt-5 space-y-2 border-t border-gray-200 pt-5 dark:border-gray-700">
             <li>
                 <a href="#"
-                    class="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ activeLink('patient/dashboard/help') }}">
+                    class="{{ activeLink('doctor/dashboard/help') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="currentColor" viewBox="0 0 24 24">
