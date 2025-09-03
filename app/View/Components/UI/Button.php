@@ -12,7 +12,6 @@ class Button extends Component
      * Create a new component instance.
      */
     public $buttonType;
-    public $customStyle;
     public function __construct($buttonType='default')
     {
         $this->buttonType = $buttonType;

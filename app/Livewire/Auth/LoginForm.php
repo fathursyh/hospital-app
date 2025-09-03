@@ -29,8 +29,9 @@ class LoginForm extends Component
             )
         ) {
             session()->regenerate();
-
-            return redirect()->intended('/');
+            session()->flash('status', 'success');
+            session()->flash('message', 'You have successfuly logged in!');
+            $this->redirectRoute('dashboard');
         }
 
         $this->addError('email', 'Invalid credentials.');

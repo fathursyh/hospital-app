@@ -16,6 +16,9 @@
     @include('components.navigations.header')
     @yield('main-content')
     @include('footer')
+    @session('status')
+        <x-ui.app-alert :status="session('status')" :message="session('message')" />
+    @endsession
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
