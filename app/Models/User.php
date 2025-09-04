@@ -27,7 +27,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'hospital_id',
     ];
 
     /**
@@ -44,6 +45,17 @@ class User extends Authenticatable
     {
         return in_array($this->role, $roles);
     }
+
+    public function hospital()
+    {
+        return $this->belongsTo(Hospital::class);
+    }
+
+      public function doctorProfile()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+
 
     /**
      * Get the attributes that should be cast.
