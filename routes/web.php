@@ -13,12 +13,13 @@ Route::middleware(['guest'])->group(function () {
     // Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('password.');
 });
 
-
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+//* superadmin routes
+require __DIR__ . '/super-admin.php';
 
 //* admin routes
 require __DIR__ . '/admin.php';

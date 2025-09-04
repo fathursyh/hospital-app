@@ -1,4 +1,7 @@
 @switch(auth()->user()->role)
+    @case('superadmin')
+        @include('components.navigations.sidebar-superadmin');
+    @break
     @case('admin')
         @include('components.navigations.sidebar-admin');
     @break

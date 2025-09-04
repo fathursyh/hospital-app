@@ -1,5 +1,6 @@
 <?php
 
+use App\HospitalTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +15,7 @@ return new class extends Migration {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('address')->nullable();
+            $table->enum('type', array_map(fn(HospitalTypeEnum $type) => $type->value, HospitalTypeEnum::cases()))->default(HospitalTypeEnum::Private);
             $table->string('phone')->nullable();
             $table->enum('subscription_status', ['active', 'inactive', 'trial'])->default('trial');
             $table->foreignUuid('admin_id')->nullable();
