@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class SuperAdminController extends Controller
@@ -16,6 +17,7 @@ class SuperAdminController extends Controller
     }
     public function plans()
     {
-        return view('superadmin.plans');
+        $plans = Plan::all(['name', 'price', 'features']);
+        return view('superadmin.plans', compact('plans'));
     }
 }
