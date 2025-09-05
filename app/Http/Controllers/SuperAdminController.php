@@ -20,6 +20,10 @@ class SuperAdminController extends Controller
         $plans = Plan::all(['id', 'name', 'price', 'features']);
         return view('superadmin.plans', compact('plans'));
     }
+    public function finances()
+    {
+        return view('superadmin.finances');
+    }
     public function edit(string $id)
     {
         $plan = Plan::find($id);
