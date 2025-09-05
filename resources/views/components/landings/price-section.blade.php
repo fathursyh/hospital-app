@@ -9,31 +9,10 @@
     </div>
     <div class="space-y-8 sm:gap-6 lg:grid lg:grid-cols-3 lg:space-y-0 xl:gap-10">
         <!-- Basic Plan -->
-        <x-cards.price-card type="Starter" desc="Perfect for small clinics and practices" price="199"
-            :advantages="[
-                'Up to 50 patients',
-                'Basic appointment scheduling',
-                'Patient records management',
-                'Email support',
-            ]" />
+        <x-cards.price-card :type="$plans[0]->name" desc="Perfect for small clinics and practices" :price="$plans[0]->price" :advantages="$plans[0]->features" />
         <!-- Professional Plan -->
-        <x-cards.price-card type="Professional" desc="Ideal for medium-sized hospitals" price="499"
-            :advantages="[
-                'Up to 500 patients',
-                'Advanced scheduling',
-                'Inventory management',
-                'Analytics dashboard',
-                '24/7 phone support',
-            ]"
-            :popular="true"
-             />
+        <x-cards.price-card :type="$plans[1]->name" desc="Ideal for medium-sized hospitals" :price="$plans[1]->price" :advantages="$plans[1]->features" :popular="true"/>
         <!-- Enterprise Plan -->
-        <x-cards.price-card type="Enterprise" desc="For large hospital networks" price="1.199" :advantages="[
-            'Unlimited patients',
-            'Multi-location support',
-            'Custom integrations',
-            'Advanced security features',
-            'Dedicated account manager',
-        ]" />
+        <x-cards.price-card :type="$plans[2]->name" desc="For large hospital networks" :price="$plans[1]->price" :advantages="$plans[2]->features" />
     </div>
 </section>

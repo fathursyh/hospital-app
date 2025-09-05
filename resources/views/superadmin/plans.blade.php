@@ -8,7 +8,7 @@
         </header>
         <div class="grid h-full max-w-screen-xl gap-4 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($plans as $plan)
-                <x-superadmin.plan-card :name="$plan->name" :price="$plan->price" />
+                <x-superadmin.plan-card :id="$plan->id" :name="$plan->name" :price="$plan->price" :features="$plan->features" />
             @endforeach
         </div>
     </div>
