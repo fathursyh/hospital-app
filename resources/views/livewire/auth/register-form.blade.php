@@ -25,8 +25,17 @@
         label="Password"
         name="password"
         type="password"
-        placeholder="password"
+        placeholder="Password"
         wire:model.defer="password"
+        wire:loading.disabled
+    />
+    <x-ui.custom-input
+        id="confirm-password"
+        label="Confirm Password"
+        name="password_confirmation"
+        type="password"
+        placeholder="Confirm password"
+        wire:model.defer="password_confirmation"
         wire:loading.disabled
     />
 

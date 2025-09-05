@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\AlertEnum;
 use App\Models\User;
 use Auth;
 use Hash;
@@ -12,11 +13,13 @@ class RegisterForm extends Component
     public $name = '';
     public $email = '';
     public $password = '';
+    public $password_confirmation = '';
 
     protected $rules = [
         'name' => 'required|string|min:3|max:255',
         'email' => 'required|email:rfc,dns|unique:users,email',
-        'password' => 'required|min:8',
+        'password' => 'required|min:8|confirmed',
+        'password_confirmation' => 'required'
     ];
 
     public function register()
@@ -37,7 +40,7 @@ class RegisterForm extends Component
         session()->regenerate();
 
         return redirect()->intended('/dashboard')->with([
-            'status' => 'success',
+            'status' => AlertEnum::Success->value,
             'message' => 'Your account is registered successfully!'
         ]);
     }

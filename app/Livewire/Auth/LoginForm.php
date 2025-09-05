@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\AlertEnum;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,9 +29,9 @@ class LoginForm extends Component
             )
         ) {
             session()->regenerate();
-            session()->flash('status', 'success');
+            session()->flash('status', AlertEnum::Success->value);
             session()->flash('message', 'You have successfuly logged in!');
-            $this->redirectRoute('dashboard');
+            $this->redirectRoute('checkout');
         }
 
         $this->addError('email', 'Invalid credentials.');
