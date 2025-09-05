@@ -18,7 +18,7 @@ class SuperAdminController extends Controller
     public function plans()
     {
         $plans = Plan::all(['id', 'name', 'price', 'features']);
-        return view('superadmin.plans', compact('plans'));
+        return view('superadmin.plans.index', compact('plans'));
     }
     public function finances()
     {
@@ -27,7 +27,7 @@ class SuperAdminController extends Controller
     public function edit(string $id)
     {
         $plan = Plan::find($id);
-        return view('superadmin.plans-edit', compact('plan'));
+        return view('superadmin.plans.edit', compact('plan'));
     }
     public function update(Request $request, Plan $plan)
     {
