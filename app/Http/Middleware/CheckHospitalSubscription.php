@@ -20,10 +20,17 @@ class CheckHospitalSubscription
         // Check if user has hospital relation
         $hospital = $user->hospital ?? null;
 
-        if (!$hospital || $hospital->subscription_status == 'inactive') {
+        if (!$hospital) {
             return redirect()->route('checkout')->with([
                 'status' => AlertEnum::Info->value,
-                'message' => 'Subscription is inactive.'
+                'message' => "Your hospital data hasn't been registered."
+            ]);
+        }
+
+        if ($hospital->subscription_status == 'inactive') {
+            return redirect()->route('checkout')->with([
+                'status' => AlertEnum::Info->value,
+                'message' => 'Subscription status is currently inactive.'
             ]);
         }
         return $next($request);

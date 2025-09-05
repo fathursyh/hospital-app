@@ -14,9 +14,11 @@ return new class extends Migration {
         Schema::create('hospitals', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('address')->nullable();
+            $table->string('address');
+            $table->string('license');
+            $table->string('website')->nullable();
             $table->enum('type', array_map(fn(HospitalTypeEnum $type) => $type->value, HospitalTypeEnum::cases()))->default(HospitalTypeEnum::Private);
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->enum('subscription_status', ['active', 'inactive', 'trial'])->default('trial');
             $table->foreignUuid('admin_id')->nullable();
             $table->timestamps();

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignUuid('admin_id')->constrained('users')->onDelete('cascade');
             $table->foreignUuid('hospital_id')->constrained('hospitals')->onDelete('cascade');
             $table->foreignId('plan_id')->nullable()->constrained('plans')->nullOnDelete();
-            $table->decimal('amount', 10, 2); // Price at the time of purchase
+            $table->integer('amount'); // Price at the time of purchase
             $table->timestamp('order_date')->useCurrent();
             $table->enum('status', ['completed', 'pending', 'failed'])->default('pending');
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\AlertEnum;
 use App\HospitalTypeEnum;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Computed;
@@ -24,7 +25,8 @@ class Checkout extends Component
 
     // Step 2: Address Information
 
-
+    public $address = '';
+    public $website = '';
     // Step 3: Payment Information
 
 
@@ -84,6 +86,12 @@ class Checkout extends Component
     {
         switch ($this->currentStep) {
             case 1:
+                if (!auth()->user()) {
+                    return redirect()->route('login')->with([
+                        'status' => AlertEnum::Info->value,
+                        'message' => 'You must logged in to proceed.'
+                    ]);
+                }
                 $this->validate([
                     // form 1
                     'hospitalName' => 'required|string|max:255',
@@ -96,6 +104,8 @@ class Checkout extends Component
             case 2:
                 $this->validate([
                     // form 2
+                    'address' => 'required|string|max:255',
+                    'website' => 'string|max:255|nullable'
                 ]);
                 break;
 

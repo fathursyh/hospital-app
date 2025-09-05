@@ -13,6 +13,9 @@
 
 <body>
     @yield('main-content')
+    @session('status')
+        <x-ui.app-alert :status="session('status')" :message="session('message')" />
+    @endsession
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 
