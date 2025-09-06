@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\AlertEnum;
 use App\HospitalTypeEnum;
+use App\Models\Plan;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -14,6 +15,7 @@ class Checkout extends Component
     public $currentStep = 1;
     public $totalSteps = 3;
 
+    public $selectedPlan = null;
 
     // Step 1: Personal Information
     public $hospitalName = '';
@@ -32,7 +34,7 @@ class Checkout extends Component
 
     // Progress tracking
     public $userProgress = [];
-
+    public $plans = [];
     public function mount()
     {
         // Initialize progress tracking
@@ -42,6 +44,11 @@ class Checkout extends Component
             'step3_completed' => false,
             'form_data' => []
         ];
+        $this->plans = Plan::all();
+    }
+
+    public function selectPlan($id) {
+        $this->selectedPlan = $id;
     }
 
     public function nextStep()
@@ -206,6 +213,11 @@ class Checkout extends Component
         return (($this->currentStep - 1) / ($this->totalSteps - 1)) * 100;
     }
 
+      #[Computed]
+    public function plan()
+    {
+        return $this->plans->firstWhere('id', $this->selectedPlan);
+    }
     public function render()
     {
         return view('livewire.checkout', [

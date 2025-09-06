@@ -1,6 +1,9 @@
 <div class="mb-8">
     <div class="mb-4 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-gray-900">{{ $stepTitle }}</h2>
+        @if ($selectedPlan !== null)
+        <span class="text-xl font-bold">{{ $this->plan->name }} Plan - ${{ $this->plan->price }}</span>
+        @endif
         <span class="text-sm text-gray-500">Step {{ $currentStep }} of {{ $totalSteps }}</span>
     </div>
     <div class="h-2 w-full rounded-full bg-gray-200">
