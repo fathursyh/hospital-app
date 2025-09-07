@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\AlertEnum;
 use App\HospitalTypeEnum;
+use App\Models\Hospital;
+use App\Models\Order;
 use App\Models\Plan;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Computed;
@@ -31,23 +33,21 @@ class Checkout extends Component
     public $website = '';
     // Step 3: Payment Information
 
-
     // Progress tracking
-    public $userProgress = [];
+    public $userProgress = [
+        'step1_completed' => false,
+        'step2_completed' => false,
+        'step3_completed' => false,
+        'form_data' => []
+    ];
     public $plans = [];
     public function mount()
     {
-        // Initialize progress tracking
-        $this->userProgress = [
-            'step1_completed' => false,
-            'step2_completed' => false,
-            'step3_completed' => false,
-            'form_data' => []
-        ];
         $this->plans = Plan::all();
     }
 
-    public function selectPlan($id) {
+    public function selectPlan($id)
+    {
         $this->selectedPlan = $id;
     }
 
@@ -93,12 +93,6 @@ class Checkout extends Component
     {
         switch ($this->currentStep) {
             case 1:
-                if (!auth()->user()) {
-                    return redirect()->route('login')->with([
-                        'status' => AlertEnum::Info->value,
-                        'message' => 'You must logged in to proceed.'
-                    ]);
-                }
                 $this->validate([
                     // form 1
                     'hospitalName' => 'required|string|max:255',
@@ -117,9 +111,9 @@ class Checkout extends Component
                 break;
 
             case 3:
-                $this->validate([
-                    // form 3
-                ]);
+                // $this->validate([
+                //     // form 3
+                // ]);
                 break;
         }
     }
@@ -128,43 +122,28 @@ class Checkout extends Component
     {
         $this->userProgress["step{$step}_completed"] = true;
 
-        // Save current step data
-        $this->saveStepData($step);
-
         // Dispatch event for step completion
         $this->dispatch('step-completed', ['step' => $step]);
     }
 
-    private function saveStepData($step)
+    private function saveStepData()
     {
-        switch ($step) {
-            case 1:
-                $this->userProgress['form_data']['company'] = [
-                    'hospitalName' => $this->hospitalName,
-                    'hospitalLicense' => $this->hospitalLicense,
-                    'hospitalType' => $this->hospitalType,
-                    'phone' => $this->phone,
-                ];
-                break;
-
-            case 2:
-                $this->userProgress['form_data']['address'] = [
-
-                ];
-                break;
-
-            case 3:
-                $this->userProgress['form_data']['payment'] = [
-
-                ];
-                break;
-        }
+        $this->userProgress['form_data'] = [
+            'hospitalName' => $this->hospitalName,
+            'hospitalLicense' => $this->hospitalLicense,
+            'hospitalType' => $this->hospitalType,
+            'phone' => $this->phone,
+            'address' => $this->address,
+            'website' => $this->website
+        ];
     }
 
     public function submit()
     {
         // Validate final step
         $this->validateCurrentStep();
+
+        $this->saveStepData();
 
         // Mark final step as completed
         $this->markStepCompleted($this->currentStep);
@@ -176,23 +155,35 @@ class Checkout extends Component
         session()->flash('success', 'Checkout completed successfully!');
 
         // Reset form or redirect
-        return redirect()->route('checkout.success');
+        return redirect()->intended('/dashboard')->with([
+            'status' => 'success',
+            'message' => 'Order has been successfully created.'
+        ]);
     }
 
     private function processCheckout()
     {
-        // Here you would typically:
-        // 1. Save to database
-        // 2. Process payment
-        // 3. Send confirmation emails
-        // 4. etc.
-
+        $user = auth()->user();
         $completeData = $this->userProgress['form_data'];
+        $hospital = Hospital::create([
+            'name' => $completeData['hospitalName'],
+            'address' => $completeData['address'],
+            'phone' => $completeData['phone'],
+            'license' => $completeData['hospitalLicense'],
+            'website' => $completeData['website'],
+            'type' => $completeData['hospitalType'],
+            'admin_id' => $user->id,
+        ]);
 
-        // Example: Create order record
-        // Order::create($completeData);
+        Order::create([
+            'admin_id' => $user->id,
+            'hospital_id' => $hospital->id,
+            'plan_id' => $this->selectedPlan,
+            'amount' => $this->plan->price,
+        ]);
 
-        // Example: Process payment
+
+
         // PaymentService::process($completeData['payment']);
     }
 
@@ -213,7 +204,7 @@ class Checkout extends Component
         return (($this->currentStep - 1) / ($this->totalSteps - 1)) * 100;
     }
 
-      #[Computed]
+    #[Computed]
     public function plan()
     {
         return $this->plans->firstWhere('id', $this->selectedPlan);

@@ -31,7 +31,7 @@ class LoginForm extends Component
             session()->regenerate();
             session()->flash('status', AlertEnum::Success->value);
             session()->flash('message', 'You have successfuly logged in!');
-            $this->redirectRoute('checkout');
+            return $this->redirectRoute('dashboard');
         }
 
         $this->addError('email', 'Invalid credentials.');

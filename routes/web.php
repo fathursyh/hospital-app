@@ -5,7 +5,6 @@ use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GeneralController::class, 'landing'])->name('home');
-Route::get('/checkout', [GeneralController::class, 'checkout'])->name('checkout');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/sign-in', [AuthController::class, 'login'])->name('login');
@@ -14,6 +13,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/checkout', [GeneralController::class, 'checkout'])->name('checkout');
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
@@ -24,7 +24,7 @@ require __DIR__ . '/super-admin.php';
 //* admin routes
 require __DIR__ . '/admin.php';
 
-//* admin routes
+//* doctor routes
 require __DIR__ . '/doctor.php';
 
 //* patient routes

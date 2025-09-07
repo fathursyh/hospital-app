@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function hospital()
     {
-        return $this->belongsTo(Hospital::class);
+        return $this->hasOne(Hospital::class, 'admin_id');
     }
 
       public function doctorProfile()

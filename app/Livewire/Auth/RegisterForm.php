@@ -39,7 +39,7 @@ class RegisterForm extends Component
 
         session()->regenerate();
 
-        return redirect()->intended('/dashboard')->with([
+        return $this->redirectRoute('checkout')->with([
             'status' => AlertEnum::Success->value,
             'message' => 'Your account is registered successfully!'
         ]);

@@ -12,6 +12,10 @@ class GeneralController extends Controller
         return view('landing', compact('plans'));
     }
     public function checkout() {
+        $hospital = auth()->user()->hospital ?? null;
+        if ($hospital) {
+            return redirect()->route('dashboard');
+        }
         return view('checkout');
     }
 }

@@ -17,7 +17,6 @@ class CheckHospitalSubscription
     public function handle(Request $request, Closure $next): Response
     {
         $user = auth()->user();
-        // Check if user has hospital relation
         $hospital = $user->hospital ?? null;
 
         if (!$hospital) {
