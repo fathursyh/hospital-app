@@ -28,7 +28,7 @@
             </li>
             {{-- menus --}}
             <li>
-                <a href="{{ route('superadmin.dashboard') }}"
+                <a wire:navigate href="{{ route('superadmin.dashboard') }}"
                     class="{{ activeLink('superadmin/dashboard') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('superadmin.hospitals') }}"
+                <a wire:navigate href="{{ route('superadmin.hospitals') }}"
                     class="{{ activeLink('superadmin/dashboard/hospitals') }} group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('superadmin.plans') }}"
+                <a wire:navigate href="{{ route('superadmin.plans') }}"
                     class="{{ activeLink('superadmin/dashboard/plans', 'superadmin/dashboard/plans/*') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -72,7 +72,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('superadmin.finances') }}"
+                <a wire:navigate href="{{ route('superadmin.finances') }}"
                     class="{{ activeLink('superadmin/dashboard/finances') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -88,7 +88,7 @@
         </ul>
         <ul class="mt-5 space-y-2 border-t border-gray-200 pt-5 dark:border-gray-700">
             <li>
-                <a href="#"
+                <a wire:navigate href="#"
                     class="{{ activeLink('superadmin/dashboard/help') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"

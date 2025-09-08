@@ -55,3 +55,17 @@ button {
         transform: translateY(30px);
     }
 }
+
+.modal {
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.modal[open] {
+    animation: slide-in-from-top 0.2s ease-out !important;
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}

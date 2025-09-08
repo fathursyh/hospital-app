@@ -17,7 +17,6 @@
         type="email"
         placeholder="name@company.com"
         wire:model.defer="email"
-        autofocus
         wire:loading.disabled
     />
     <x-ui.custom-input

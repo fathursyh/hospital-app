@@ -29,7 +29,7 @@
             </li>
             {{-- menus --}}
             <li>
-                <a href="{{ route('admin.dashboard') }}"
+                <a wire:navigate href="{{ route('admin.dashboard') }}"
                     class="{{ activeLink('admin/dashboard') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.schedules') }}"
+                <a wire:navigate href="{{ route('admin.schedules') }}"
                     class="{{ activeLink('admin/dashboard/schedules') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.staff') }}"
+                <a wire:navigate href="{{ route('admin.staff') }}"
                     class="{{ activeLink('admin/dashboard/staff') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.doctors') }}"
+                <a wire:navigate href="{{ route('admin.doctors') }}"
                     class="{{ activeLink('admin/dashboard/doctors') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -82,7 +82,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('doctor.bills') }}"
+                <a wire:navigate href="{{ route('doctor.bills') }}"
                     class="{{ activeLink('staff/dashboard/payroll') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -96,7 +96,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('doctor.bills') }}"
+                <a wire:navigate href="{{ route('doctor.bills') }}"
                     class="{{ activeLink('staff/dashboard/payroll') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -115,7 +115,7 @@
         </ul>
         <ul class="mt-5 space-y-2 border-t border-gray-200 pt-5 dark:border-gray-700">
             <li>
-                <a href="#"
+                <a wire:navigate href="#"
                     class="{{ activeLink('admin/dashboard/subscription') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -128,7 +128,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a wire:navigate href="#"
                     class="{{ activeLink('admin/dashboard/setting') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"

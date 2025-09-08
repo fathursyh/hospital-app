@@ -151,9 +151,6 @@ class Checkout extends Component
         // Process the complete form data
         $this->processCheckout();
 
-        // Redirect or show success message
-        session()->flash('success', 'Checkout completed successfully!');
-
         // Reset form or redirect
         return redirect()->intended('/dashboard')->with([
             'status' => 'success',

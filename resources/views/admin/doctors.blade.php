@@ -1,5 +1,7 @@
 @extends('layouts.dashboard-layout')
 @section('title', 'Doctors')
 @section('content')
-    <p>doctors</p>
+<div>
+    <livewire:admin.doctor-table />
+</div>
 @endsection
