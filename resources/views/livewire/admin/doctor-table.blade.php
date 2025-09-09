@@ -1,8 +1,7 @@
 <div class="relative max-w-screen-xl overflow-x-auto">
     @teleport('body')
-        <dialog class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md" @if ($showModal)
-            open
-        @endif>
+        <dialog class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md"
+            @if ($showModal) open @endif>
             <div wire:click.outside="closeModal">
                 @include('components.admin.new-doctor-form')
             </div>
@@ -12,8 +11,8 @@
         <div class="bg-gray-900 flex-1 lg:flex-none">
             <div class="relative">
                 <div class="rtl:inset-r-0 pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                    <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 20 20">
+                    <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
@@ -47,26 +46,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr
-                class="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                    1
-                </td>
-                <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
-                    City General Hospital
-                </th>
-                <td class="px-6 py-4">
-                    Cardiology
-                </td>
-                <td class="px-6 py-4">
-                    (123) 456-7890
-                </td>
-                <td class="px-6 py-4">
-                    <button class="rounded bg-blue-600 px-3 py-1 text-sm font-medium text-white hover:bg-blue-700">
-                        Detail
-                    </button>
-                </td>
-            </tr>
+            @foreach ($doctors as $doctor)
+                <tr
+                    class="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+                    <td class="w-4 p-4">
+                        {{ $loop->iteration }}
+                    </td>
+                    <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
+                        {{ $doctor->user->name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ $doctor->specialization }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $doctor->phone }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <button class="rounded bg-blue-600 px-3 py-1 text-sm font-medium text-white hover:bg-blue-700">
+                            Detail
+                        </button>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

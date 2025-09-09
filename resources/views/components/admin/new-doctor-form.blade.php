@@ -1,4 +1,4 @@
-<form class="space-y-4 w-full bg-white rounded p-8" wire:submit="save">
+<form class="space-y-2 w-full bg-white rounded p-8" wire:submit="save">
     <x-ui.custom-input id="name" label="Doctor Name" name="name" type="text" placeholder="John Doe"
         wire:model.defer="name" wire:loading.disabled />
     <x-ui.custom-input id="specialization" label="Doctor Specialization" name="specialization" type="text"

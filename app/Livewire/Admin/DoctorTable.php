@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Doctor;
+use App\Models\User;
+use Hash;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
@@ -23,10 +26,26 @@ class DoctorTable extends Component
             'name' => 'required|string|max:255',
             'specialization' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|string|regex:/^[0-9]{10,15}$/|unique:users,phone',
+            'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required'
         ]);
+
+        $user = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
+
+        Doctor::create([
+            'user_id' => $user->id,
+            'specialization' => $this->specialization,
+            'phone' => $this->phone,
+            'hospital_id' => auth()->user()->hospital->id
+        ]);
+        session()->flash('status', 'success');
+        session()->flash('message', 'Doctor has been created successfully!');
+        return $this->redirectRoute('admin.doctors');
 
     }
 
@@ -44,9 +63,14 @@ class DoctorTable extends Component
         $this->showModal = false;
         $this->editMode = false;
         $this->dispatch('close-modal');
+        $this->clearValidation();
+        $this->reset();
     }
     public function render()
     {
-        return view('livewire.admin.doctor-table');
+        $doctors = Doctor::with('user')->whereHas('user', function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%');
+        })->paginate(20);
+        return view('livewire.admin.doctor-table', compact('doctors'));
     }
 }
