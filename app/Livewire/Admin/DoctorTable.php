@@ -52,6 +52,12 @@ class DoctorTable extends Component
     public $showModal = false;
     public $editMode = false;
 
+    public function resetForm()
+    {
+        $this->clearValidation();
+        $this->reset();
+    }
+
     public function openModal($edit = false)
     {
         $this->showModal = true;
@@ -63,8 +69,7 @@ class DoctorTable extends Component
         $this->showModal = false;
         $this->editMode = false;
         $this->dispatch('close-modal');
-        $this->clearValidation();
-        $this->reset();
+
     }
     public function render()
     {

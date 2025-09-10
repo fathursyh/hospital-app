@@ -8,6 +8,7 @@
     @include('components.partials.seo-meta')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="bg-gray-100 dark:bg-gray-900">
     <x-navigations.sidebar-index />
     <main class="md:ms-64 md:p-8 p-6">
@@ -17,6 +18,23 @@
         <x-ui.app-alert :status="session('status')" :message="session('message')" />
     @endsession
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>
+        function show() {
+            document.querySelector('dialog').showModal();
+        }
+        function hide() {
+            document.querySelector('dialog').close();
+        }
+        document.addEventListener('livewire:navigated', () => {
+            document.addEventListener('open-modal', show);
+            document.addEventListener('close-modal', hide);
+        });
+
+        document.addEventListener('livewire:navigating', () => {
+            document.removeEventListener('open-modal', show);
+            document.removeEventListener('close-modal', hide);
+        })
+    </script>
 </body>
 
 </html>

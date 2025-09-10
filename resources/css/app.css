@@ -69,3 +69,10 @@ button {
 .modal::backdrop {
     background: rgba(0, 0, 0, 0.6);
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+   background-image: url("https://www.iconpacks.net/icons/1/free-time-icon-968-thumb.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+}

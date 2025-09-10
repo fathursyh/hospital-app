@@ -6,10 +6,11 @@
     'value' => old($name),
 ])
 
-<div x-data="{ show: false }">
+<div x-data="{ show: false }"
+    class="{{ $type === 'checkbox' ? 'flex flex-row-reverse my-4 items-start justify-end gap-2' : null }}">
     <label for="{{ $id }}" class="mb-2 block text-sm font-medium text-gray-900">{{ $label }}</label>
     <fieldset
-        class="focus:ring-primary-600 focus:border-primary-600 {{ $errors->has($name) ? 'border-red-600!' : null }} relative flex w-full overflow-hidden rounded-lg border border-gray-300 bg-gray-50">
+        class="focus:ring-primary-600 focus:border-primary-600 {{ $errors->has($name) ? 'border-red-600!' : null }} relative flex {{ $type === 'checkbox' ? 'w-fit' : 'w-full' }} overflow-hidden rounded-lg border border-gray-300 bg-gray-50">
         @if ($type === 'select')
             <select name="{{ $name }}" id="{{ $id }}"
                 {{ $attributes->merge([
@@ -17,6 +18,13 @@
                 ]) }}>
                 {{ $slot }}
             </select>
+        @elseif($type === 'checkbox')
+            <input type="checkbox"
+                {{ $attributes->merge([
+                    'class' => 'flex-7 p-2.5 text-gray-900 bg-gray-50 sm:text-sm border-none ring-none',
+                ]) }}
+                    name="{{ $name }}"
+                />
         @else
             <input
                 {{ $attributes->merge([

@@ -1,7 +1,7 @@
 <div class="relative max-w-screen-xl overflow-x-auto">
     @teleport('body')
         <dialog class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md"
-            @if ($showModal) open @endif>
+            @if ($showModal) open @endif x-on:close="$wire.resetForm()">
             <div wire:click.outside="closeModal">
                 @include('components.admin.new-doctor-form')
             </div>
@@ -22,7 +22,7 @@
                     placeholder="Search for doctor names" wire:model.live.debounce.500ms="search">
             </div>
         </div>
-        <button data-modal-target="create-schedule-modal" data-modal-toggle="create-schedule-modal"
+        <button
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             type="button" wire:click="openModal">
             <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,18 +78,3 @@
         </tbody>
     </table>
 </div>
-
-<script>
-    let modal;
-    setTimeout(() => {
-        modal = document.querySelector('dialog');
-    }, 400);
-
-    document.addEventListener('open-modal', () => {
-        modal.showModal();
-    });
-
-    document.addEventListener('close-modal', () => {
-        modal.close();
-    });
-</script>

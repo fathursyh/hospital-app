@@ -1,5 +1,12 @@
-    <div class="mx-auto max-w-screen-xl">
-
+    <div class="max-w-screen-xl relative">
+        @teleport('body')
+            <dialog class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md"
+                @if ($showModal) open @endif x-on:close="$wire.resetForm()">
+                <div wire:click.outside="closeModal">
+                    @include('components.admin.schedules-form')
+                </div>
+            </dialog>
+        @endteleport
         <!-- Action Bar -->
         <div class="mb-4 flex items-center justify-between">
             <div>
@@ -8,9 +15,8 @@
             </div>
 
             <!-- Create New Schedule Button -->
-            <button data-modal-target="create-schedule-modal" data-modal-toggle="create-schedule-modal"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                type="button">
+            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                type="button" wire:click="openModal">
                 <svg class="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
@@ -83,10 +89,7 @@
                                     <p class="text-sm font-medium text-gray-900 dark:text-white">Dr. Johnson</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span
-                                        class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                                        Neurology
-                                    </span>
+                                    Neurology
                                 </td>
                                 <td class="px-6 py-4">
                                     <span class="text-sm text-red-600 dark:text-red-400">Off</span>
