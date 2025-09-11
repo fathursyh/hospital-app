@@ -1,15 +1,16 @@
-<form class="space-y-2 w-full bg-white rounded p-8">
+<form class="space-y-2 w-full bg-white rounded p-8" wire:submit="updateSchedule">
     <h2 class="text-xl font-bold text-center">New Schedule</h2>
     <x-ui.custom-input
-        id="doctor_id"
+        id="doctor"
         label="Doctor"
-        name="doctorId"
+        name="doctor"
         type="select"
-        wire:model.defer="doctorId"
+        wire:model="doctor"
         wire:loading.disabled>
-         @foreach ($doctorSelect ?? [] as $id => $name)
-             <option value="{{ $id }}">Dr. {{ $name}}</option>
-         @endforeach
+        <option value="" >-- Select Doctor --</option>
+       @foreach ($doctorSelect as $doctor)
+            <option value="{{ $doctor['id'] }}">Dr. {{ $doctor['user']['name'] }}</option>
+        @endforeach
     </x-ui.custom-input>
     <x-ui.custom-input
         id="day-of-week"
@@ -45,5 +46,4 @@
         wire:model="available"
         wire:loading.disabled />
     <x-ui.button type="submit" class="w-full">Create</x-ui.button>
-
 </form>

@@ -31,21 +31,19 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Doctor</label>
                     <select
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>All Doctors</option>
-                        <option value="dr-smith">Dr. Smith</option>
-                        <option value="dr-johnson">Dr. Johnson</option>
-                        <option value="dr-williams">Dr. Williams</option>
+                        <option value="" selected>All Doctor</option>
+                        @foreach ($doctorSelect as $doctor)
+                            <option value="{{ $doctor['id'] }}">{{ $doctor['user']['name'] }}</option>
+                        @endforeach
                     </select>
                 </div>
-
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
                     <select
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>All Departments</option>
-                        <option value="cardiology">Cardiology</option>
-                        <option value="neurology">Neurology</option>
-                        <option value="pediatrics">Pediatrics</option>
+                        @foreach ($doctorSelect as $doctor)
+                            <option value="{{ $doctor['specialization'] }}">{{ $doctor['specialization'] }}</option>
+                        @endforeach
                     </select>
                 </div>
 
