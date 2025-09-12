@@ -8,7 +8,7 @@
         wire:model="doctor"
         wire:loading.disabled>
         <option value="" >-- Select Doctor --</option>
-       @foreach ($doctorSelect as $doctor)
+       @foreach ($doctorSchedules as $doctor)
             <option value="{{ $doctor['id'] }}">Dr. {{ $doctor['user']['name'] }}</option>
         @endforeach
     </x-ui.custom-input>

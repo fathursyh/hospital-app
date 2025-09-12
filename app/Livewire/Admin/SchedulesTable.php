@@ -4,8 +4,10 @@ namespace App\Livewire\Admin;
 
 use App\Models\Doctor;
 use App\Models\Schedule;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Ramsey\Collection\Set;
 
 define('DAYS', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
 class SchedulesTable extends Component
@@ -59,9 +61,10 @@ class SchedulesTable extends Component
         session()->flash('message', 'New schedule has been created!');
         $this->redirectRoute('admin.schedules');
     }
+
     public function render()
     {
-        $doctorSelect = Doctor::with(['user:id,name'])->get(['id', 'user_id', 'specialization'])->toArray();
-        return view('livewire.admin.schedules-table', compact(['doctorSelect']));
+        $doctorSchedules = Doctor::with(['user:id,name', 'schedules'])->get(['id', 'user_id', 'specialization'])->toArray();
+        return view('livewire.admin.schedules-table', compact(['doctorSchedules']));
     }
 }
