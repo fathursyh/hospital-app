@@ -41,20 +41,35 @@ class SchedulesTable extends Component
         $this->dispatch('close-modal');
     }
 
-    public function updateSchedule() {
+    public function updateSchedule()
+    {
         $this->validate([
             'doctor' => 'required',
             'startTime' => 'required',
             'endTime' => 'required'
         ]);
         $user = auth()->user();
-        Schedule::create([
-            'doctor_id' => $this->doctor,
-            'hospital_id' => $user->hospital->id,
-            'day_of_week' => $this->day,
+
+        $existSchedule = Schedule::firstOrCreate(
+            [
+                'doctor_id' => $this->doctor,
+                'hospital_id' => $user->hospital->id,
+                'day_of_week' => $this->day
+            ],
+            [
+                'doctor_id' => $this->doctor,
+                'hospital_id' => $user->hospital->id,
+                'day_of_week' => $this->day,
+                'start_time' => $this->startTime,
+                'end_time' => $this->endTime,
+            ]
+        );
+
+        $existSchedule->update([
             'start_time' => $this->startTime,
-            'end_time' => $this->endTime,
+            'end_time' => $this->endTime
         ]);
+
         session()->flash('status', 'success');
         session()->flash('message', 'New schedule has been created!');
         $this->redirectRoute('admin.schedules');

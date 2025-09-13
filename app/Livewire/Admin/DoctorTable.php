@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Doctor;
 use App\Models\User;
+use App\UserEnum;
 use Hash;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -35,6 +36,7 @@ class DoctorTable extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
+            'role' => UserEnum::Doctor->value
         ]);
 
         Doctor::create([
@@ -73,9 +75,15 @@ class DoctorTable extends Component
     }
     public function render()
     {
-        $doctors = Doctor::with('user')->whereHas('user', function ($query) {
-            $query->where('name', 'like', '%' . $this->search . '%');
-        })->paginate(20);
+        $doctors = Doctor::with('user')
+            ->whereHas('user', function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
+            })
+            ->join('users', 'users.id', '=', 'doctors.user_id') // join the users table
+            ->orderBy('users.name', 'asc')
+            ->select('doctors.*') // avoid column conflicts
+            ->paginate(20);
+
         return view('livewire.admin.doctor-table', compact('doctors'));
     }
 }

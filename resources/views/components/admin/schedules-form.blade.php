@@ -1,5 +1,5 @@
 <form class="space-y-2 w-full bg-white rounded p-8" wire:submit="updateSchedule">
-    <h2 class="text-xl font-bold text-center">New Schedule</h2>
+    <h2 class="text-xl font-bold text-center">Change Doctor Schedule</h2>
     <x-ui.custom-input
         id="doctor"
         label="Doctor"
@@ -37,5 +37,5 @@
         type="time"
         wire:model.defer="endTime"
         wire:loading.disabled />
-    <x-ui.button type="submit" class="w-full mt-4">Create</x-ui.button>
+    <x-ui.button type="submit" class="w-full mt-4">Change</x-ui.button>
 </form>
