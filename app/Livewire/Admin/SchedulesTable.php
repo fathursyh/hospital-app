@@ -21,7 +21,6 @@ class SchedulesTable extends Component
     public $day = DAYS[0];
     public $startTime;
     public $endTime;
-    public $available = true;
 
     public function resetForm()
     {
@@ -55,7 +54,6 @@ class SchedulesTable extends Component
             'day_of_week' => $this->day,
             'start_time' => $this->startTime,
             'end_time' => $this->endTime,
-            'is_available' => $this->available
         ]);
         session()->flash('status', 'success');
         session()->flash('message', 'New schedule has been created!');

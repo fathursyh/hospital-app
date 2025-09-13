@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->string('day_of_week'); // e.g., Monday, Tuesday
             $table->time('start_time');
             $table->time('end_time');
-            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }

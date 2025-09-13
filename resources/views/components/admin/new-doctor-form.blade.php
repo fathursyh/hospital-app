@@ -11,5 +11,5 @@
     <x-ui.custom-input id="password" label="Password" name="password" type="password" placeholder="Password"
         wire:model.defer="password" wire:loading.disabled />
     <x-ui.custom-input id="confirm-password" label="Confirm Password" name="password_confirmation" type="password" placeholder="Confirm password" wire:model.defer="password_confirmation" wire:loading.disabled />
-    <x-ui.button type="submit" class="w-full">Create</x-ui.button>
+    <x-ui.button type="submit" class="w-full mt-4">Create</x-ui.button>
 </form>

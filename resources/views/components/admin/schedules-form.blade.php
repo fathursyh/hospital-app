@@ -37,13 +37,5 @@
         type="time"
         wire:model.defer="endTime"
         wire:loading.disabled />
-    <x-ui.custom-input
-        id="available"
-        class="w-fit! aspect-square"
-        label="Available"
-        name="available"
-        type="checkbox"
-        wire:model="available"
-        wire:loading.disabled />
-    <x-ui.button type="submit" class="w-full">Create</x-ui.button>
+    <x-ui.button type="submit" class="w-full mt-4">Create</x-ui.button>
 </form>
