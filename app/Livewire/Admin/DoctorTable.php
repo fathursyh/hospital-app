@@ -118,6 +118,7 @@ class DoctorTable extends Component
             ->whereHas('user', function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%');
             })
+            ->where('doctors.hospital_id', '=', auth()->user()->hospital->id)
             ->join('users', 'users.id', '=', 'doctors.user_id') // join the users table
             ->orderBy('users.name', 'asc')
             ->select('doctors.*') // avoid column conflicts

@@ -77,7 +77,9 @@ class SchedulesTable extends Component
 
     public function render()
     {
-        $doctorSchedules = Doctor::with(['user:id,name', 'schedules'])->get(['id', 'user_id', 'specialization'])->toArray();
+        $doctorSchedules = Doctor::with(['user:id,name', 'schedules'])->get(['id', 'user_id', 'specialization'])
+        ->where('doctors.hospital_id', '=', auth()->user()->hospital->id)
+        ->toArray();
         return view('livewire.admin.schedules-table', compact(['doctorSchedules']));
     }
 }

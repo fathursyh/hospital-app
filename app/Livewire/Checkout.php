@@ -96,7 +96,7 @@ class Checkout extends Component
                 $this->validate([
                     // form 1
                     'hospitalName' => 'required|string|max:255',
-                    'hospitalLicense' => 'required|string|max:255',
+                    'hospitalLicense' => 'required|string|max:255|unique:hospitals,license',
                     'hospitalType' => ['required', new Enum(HospitalTypeEnum::class)],
                     'phone' => 'required|string|regex:/^[0-9+\-\s()]{7,20}$/',
                 ]);

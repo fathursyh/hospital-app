@@ -15,10 +15,10 @@ return new class extends Migration {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('address');
-            $table->string('license');
+            $table->string('license')->unique();
             $table->string('website')->nullable();
             $table->enum('type', array_map(fn(HospitalTypeEnum $type) => $type->value, HospitalTypeEnum::cases()))->default(HospitalTypeEnum::Private);
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->enum('subscription_status', ['active', 'inactive', 'trial'])->default('trial');
             $table->foreignUuid('admin_id')->nullable();
             $table->timestamps();
