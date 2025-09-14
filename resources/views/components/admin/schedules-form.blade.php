@@ -1,4 +1,4 @@
-<form class="space-y-2 w-full bg-white rounded p-8" wire:submit="updateSchedule">
+<form class="space-y-2 w-full rounded p-8" wire:submit="updateSchedule">
     <h2 class="text-xl font-bold text-center">Change Doctor Schedule</h2>
     <x-ui.custom-input
         id="doctor"

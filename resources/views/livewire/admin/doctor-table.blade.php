@@ -62,7 +62,7 @@
                     <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
                         {{ $doctor->user->name }}
                     </th>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 capitalize">
                         {{ $doctor->specialization }}
                     </td>
                     <td class="px-6 py-4">
@@ -70,7 +70,7 @@
                     </td>
                     <td class="px-6 py-4 flex space-x-2">
                         <!-- Edit Button -->
-                        <button class="rounded bg-blue-600 p-2 text-white hover:bg-blue-700" title="Edit" wire:click="openModal({{ true }}, '{{ $doctor->id }}')">
+                        <button class="rounded bg-blue-500 p-2 text-white hover:bg-blue-600" title="Edit" wire:click="openModal({{ true }}, '{{ $doctor->id }}')">
                             <!-- Flowbite Pencil Square Icon -->
                             <svg class="w-4  h-4  text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -85,7 +85,7 @@
                         </button>
 
                         <!-- Delete Button -->
-                        <button class="rounded bg-red-600 p-2 text-white hover:bg-red-700" title="Delete" wire:click="deleteDoctor('{{ $doctor->user_id }}')" wire:confirm="Delete Dr. {{ $doctor->user->name }} from the doctor list?">
+                        <button class="rounded bg-red-500 p-2 text-white hover:bg-red-600" title="Delete" wire:click="deleteDoctor('{{ $doctor->user_id }}')" wire:confirm="Delete Dr. {{ $doctor->user->name }} from the doctor list?">
                             <!-- Flowbite Trash Icon -->
                             <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"

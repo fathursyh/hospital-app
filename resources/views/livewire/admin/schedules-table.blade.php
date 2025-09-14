@@ -35,7 +35,7 @@
                                     <p class="text-sm font-medium text-gray-900 dark:text-white">Dr.
                                         {{ $schedule['user']['name'] }}</p>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 capitalize">
                                     {{ $schedule['specialization'] }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-green-600 dark:text-green-400 font-medium">

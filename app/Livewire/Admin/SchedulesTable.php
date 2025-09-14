@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Doctor;
 use App\Models\Schedule;
+use App\SpecializationEnum;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -77,9 +78,10 @@ class SchedulesTable extends Component
 
     public function render()
     {
-        $doctorSchedules = Doctor::with(['user:id,name', 'schedules'])->get(['id', 'user_id', 'specialization'])
-        ->where('doctors.hospital_id', '=', auth()->user()->hospital->id)
+        $doctorSchedules = Doctor::with(['user:id,name', 'schedules'])->get(['id', 'user_id', 'specialization', 'hospital_id'])
+        ->where('hospital_id', '=', auth()->user()->hospital->id)
         ->toArray();
-        return view('livewire.admin.schedules-table', compact(['doctorSchedules']));
+           $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
+        return view('livewire.admin.schedules-table', compact(['doctorSchedules', 'specializations']));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Livewire\Admin;
 use App\AlertEnum;
 use App\Models\Doctor;
 use App\Models\User;
+use App\SpecializationEnum;
 use App\UserEnum;
 use Hash;
 use Livewire\Attributes\Locked;
@@ -28,15 +29,15 @@ class DoctorTable extends Component
 
     public function save()
     {
+        $this->validate([
+            'name' => 'required|string|max:255',
+            'specialization' => 'required|string|max:255',
+            'email' => !$this->editMode ? 'required|email|unique:users,email' : '',
+            'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
+            'password' => !$this->editMode ? 'required|string|min:8|confirmed' : '',
+            'password_confirmation' => !$this->editMode ? 'required': ''
+        ]);
         try {
-            $this->validate([
-                'name' => 'required|string|max:255',
-                'specialization' => 'required|string|max:255',
-                'email' => !$this->editMode ? 'required|email|unique:users,email' : '',
-                'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
-                'password' => !$this->editMode ? 'required|string|min:8|confirmed' : '',
-                'password_confirmation' => !$this->editMode ? 'required': ''
-            ]);
             $user = User::updateOrCreate([
                 'id' => $this->userId
             ], [
@@ -124,6 +125,7 @@ class DoctorTable extends Component
             ->select('doctors.*') // avoid column conflicts
             ->paginate(20);
 
-        return view('livewire.admin.doctor-table', compact('doctors'));
+        $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
+        return view('livewire.admin.doctor-table', compact('doctors', 'specializations'));
     }
 }
