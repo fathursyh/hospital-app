@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->string('specialization')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
-            // A doctor is uniquely identified by their user_id and hospital_id
             $table->unique(['user_id', 'hospital_id']);
         });
     }
