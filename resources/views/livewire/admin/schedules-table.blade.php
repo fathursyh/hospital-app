@@ -1,5 +1,4 @@
 <div class="max-w-screen-xl relative">
-
     @teleport('body')
         <dialog class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md"
             @if ($showModal) open @endif x-on:close="$wire.resetForm()">

@@ -1,18 +1,13 @@
-<!-- Action Bar -->
+{{-- Action bar --}}
 <div class="mb-4 flex items-center justify-between">
     <div>
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Schedule Overview</h2>
         <p class="text-gray-600 dark:text-gray-400">Manage doctor schedules and availability</p>
     </div>
-
-    <!-- Create New Schedule Button -->
+    {{-- Create New Schedule Button --}}
     <button
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 flex gap-2 items-center disabled:cursor-not-allowed! disabled:bg-gray-600!"
-        type="button" wire:click="openModal"
-        @if (count($doctorSchedules) === 0)
-            disabled
-        @endif
-        >
+        type="button" wire:click="openModal" @if (count($doctorSchedules) === 0) disabled @endif>
         <svg class="w-4 h-4 inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
@@ -25,16 +20,16 @@
         Update Schedule
     </button>
 </div>
-
 <!-- Filters -->
 <div class="mb-4 bg-white rounded-lg shadow p-4 dark:bg-gray-800">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Doctor</label>
             <select
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                id="doctor-filter"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" wire:model="doctorFilter">
                 <option value="" selected>All Doctor</option>
-                @foreach ($doctorSchedules as $doctor)
+                @foreach ($this->doctorList() as $doctor)
                     <option value="{{ $doctor['id'] }}">{{ $doctor['user']['name'] }}</option>
                 @endforeach
             </select>
@@ -42,7 +37,9 @@
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
             <select
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 capitalize">
+                id="specialization-filter"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 capitalize" wire:model="specializationFilter">
+                <option value="" selected>All Departments</option>
                 @foreach ($specializations as $specialization)
                     <option class="capitalize" value="{{ $specialization }}">{{ $specialization }}</option>
                 @endforeach
@@ -50,15 +47,23 @@
         </div>
 
         <div>
+            {{-- third filter --}}
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Week</label>
-            <input type="week"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <x-ui.button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="w-full py-2.5 px-2.5! bg-gray-700! border border-gray-600! flex gap-2 items-center justify-between">
+                Filter Days
+                <svg class="size-2.5 ms-2.5 text-gray-500!" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+            </x-ui.button>
+            @include('components.admin.days-dropdown')
         </div>
 
         <div class="flex items-end">
             <button type="button"
-                class="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
-                Filter
+                class="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" wire:click="$refresh">
+                Apply Filter
             </button>
         </div>
     </div>

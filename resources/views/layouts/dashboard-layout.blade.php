@@ -17,7 +17,6 @@
     @session('status')
         <x-ui.app-alert :status="session('status')" :message="session('message')" />
     @endsession
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script>
         function show() {
             document.querySelector('dialog').showModal();
@@ -26,6 +25,7 @@
             document.querySelector('dialog').close();
         }
         document.addEventListener('livewire:navigated', () => {
+            initFlowbite()
             document.addEventListener('open-modal', show);
             document.addEventListener('close-modal', hide);
         });

@@ -8,13 +8,16 @@ use App\SpecializationEnum;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
-use Ramsey\Collection\Set;
 
 define('DAYS', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
 class SchedulesTable extends Component
 {
     #[Url()]
-    public $filter = [];
+    public $doctorFilter = null;
+    #[Url()]
+    public $specializationFilter = null;
+    #[Url()]
+    public $dayFilter = [];
     public $showModal = false;
     public $editMode = false;
 
@@ -76,12 +79,39 @@ class SchedulesTable extends Component
         $this->redirectRoute('admin.schedules');
     }
 
+    #[Computed(persist: true, seconds: 3600)]
+    public function doctorList()
+    {
+        return Doctor::with('user:id,name')->get(['id', 'user_id'])->toArray();
+    }
+
     public function render()
     {
-        $doctorSchedules = Doctor::with(['user:id,name', 'schedules'])->get(['id', 'user_id', 'specialization', 'hospital_id'])
-        ->where('hospital_id', '=', auth()->user()->hospital->id)
+        $doctorSchedules = Doctor::with([
+            'user:id,name',
+            'schedules' => function ($query) {
+                if (!empty($this->dayFilter)) {
+                    $query->whereIn('day_of_week', $this->dayFilter);
+                }
+            }
+        ])
+        ->where('hospital_id', auth()->user()->hospital->id)
+        ->when($this->specializationFilter, function ($query, $specialization) {
+            return $query->where('specialization', '=', $specialization);
+        })
+        ->when($this->doctorFilter, function ($query, $doctorId) {
+            return $query->where('id', '=', $doctorId);
+        })
+        ->when(!empty($this->dayFilter), function ($query) {
+            return $query->whereHas('schedules', function ($q) {
+                $q->whereIn('day_of_week', $this->dayFilter);
+            });
+        })
+        ->get(['id', 'user_id', 'specialization', 'hospital_id'])
         ->toArray();
-           $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
+
+        $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
+
         return view('livewire.admin.schedules-table', compact(['doctorSchedules', 'specializations']));
     }
 }
