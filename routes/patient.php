@@ -2,6 +2,6 @@
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'role:patient'])->group(function () {
-
+Route::middleware(['web'])->group(function () {
+    Route::get('/patient-appointment/{hospitalId}', fn() => view('patient-appointment'))->name('patient.appointment');
 });

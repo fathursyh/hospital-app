@@ -21,7 +21,7 @@ class DoctorTable extends Component
     #[Locked()]
     public $userPass = '';
     public $name = '';
-    public $specialization = '';
+    public $specialization = SpecializationEnum::ANESTHESIONLOGIST->value;
     public $email = '';
     public $phone = '';
     public $password = '';

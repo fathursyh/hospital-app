@@ -12,7 +12,7 @@
     class="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
     aria-label="Sidenav">
     <div
-        class="h-full overflow-y-auto border-r border-gray-200 bg-white px-3 py-5 dark:border-gray-700 dark:bg-gray-800">
+        class="h-full overflow-y-auto border-r border-gray-200 px-3 py-5 dark:border-gray-700 dark:bg-gray-800 flex flex-col">
         <ul class="space-y-2">
             <li class="mb-4">
                 <a href="/"
@@ -29,7 +29,7 @@
             </li>
             {{-- menus --}}
             <li>
-                <a href="{{ route('doctor.dashboard') }}"
+                <a wire:navigate href="{{ route('doctor.dashboard') }}"
                     class="{{ activeLink('doctor/dashboard') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('doctor.appointments') }}"
+                <a wire:navigate href="{{ route('doctor.appointments') }}"
                     class="{{ activeLink('doctor/dashboard/appointments') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('doctor.bills') }}"
+                <a wire:navigate href="{{ route('doctor.bills') }}"
                     class="{{ activeLink('doctor/dashboard/bills') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -73,7 +73,7 @@
         </ul>
         <ul class="mt-5 space-y-2 border-t border-gray-200 pt-5 dark:border-gray-700">
             <li>
-                <a href="#"
+                <a wire:navigate href="#"
                     class="{{ activeLink('doctor/dashboard/help') }} group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -82,7 +82,6 @@
                             d="M17 10v1.126c.367.095.714.24 1.032.428l.796-.797 1.415 1.415-.797.796c.188.318.333.665.428 1.032H21v2h-1.126c-.095.367-.24.714-.428 1.032l.797.796-1.415 1.415-.796-.797a3.979 3.979 0 0 1-1.032.428V20h-2v-1.126a3.977 3.977 0 0 1-1.032-.428l-.796.797-1.415-1.415.797-.796A3.975 3.975 0 0 1 12.126 16H11v-2h1.126c.095-.367.24-.714.428-1.032l-.797-.796 1.415-1.415.796.797A3.977 3.977 0 0 1 15 11.126V10h2Zm.406 3.578.016.016c.354.358.574.85.578 1.392v.028a2 2 0 0 1-3.409 1.406l-.01-.012a2 2 0 0 1 2.826-2.83ZM5 8a4 4 0 1 1 7.938.703 7.029 7.029 0 0 0-3.235 3.235A4 4 0 0 1 5 8Zm4.29 5H7a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h6.101A6.979 6.979 0 0 1 9 15c0-.695.101-1.366.29-2Z"
                             clip-rule="evenodd" />
                     </svg>
-
                     <span class="ml-3">Help</span>
                 </a>
             </li>
@@ -99,6 +98,16 @@
                 </a>
             </li>
         </ul>
+        <p class="flex-1 flex gap-4 items-end text-white font-bold">
+            <span>
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                        d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </span>
+            {{ auth()->user()->name }}
+        </p>
     </div>
-
 </aside>
