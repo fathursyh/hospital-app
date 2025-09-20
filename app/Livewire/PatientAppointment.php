@@ -2,29 +2,108 @@
 
 namespace App\Livewire;
 
+use App\AlertEnum;
+use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\Patient;
 use DateTime;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class PatientAppointment extends Component
 {
+    public $currentStep = 1;
+    public $totalSteps = 2;
+    // patients data
     public $name = '';
+    public $birth = null;
+    public $gender = '';
+    public $phone = '';
+    public $address = '';
+
+    // appointment data
     public $date = null;
-    public $doctorId = '';
+    public $doctor = '';
     public $reason = '';
     public $hospitalId;
 
+    public $patientInputs = [
+        'patient' => [],
+        'appointment' => []
+    ];
+
+    public function nextStep()
+    {
+        $this->validateCurrentStep();
+
+        if ($this->currentStep < $this->totalSteps) {
+            $this->currentStep++;
+        }
+    }
+
+    public function previousStep()
+    {
+        if ($this->currentStep > 1) {
+            $this->currentStep--;
+        }
+    }
+
+    private function validateCurrentStep()
+    {
+        switch ($this->currentStep) {
+            case 1:
+
+                $this->patientInputs['patient'] =
+                    $this->validate([
+                        'name' => 'required',
+                        'birth' => 'required',
+                        'phone' => 'required',
+                        'address' => 'required',
+                    ]);
+                break;
+            case 2:
+                $this->patientInputs['appointment'] =
+                    $this->validate([
+                        'date' => 'required',
+                        'doctor' => 'required',
+                        'reason' => 'required'
+                    ]);
+                break;
+        }
+    }
+
     public function submitHandle()
     {
-        $this->validate([
-            'name' => 'required',
-            'date' => 'required',
-            'doctorId' => 'required',
-            'reason' => 'required'
+        $this->validateCurrentStep();
+        $date = new DateTime($this->date);
+        $patient = Patient::firstOrCreate([
+            'contact' => $this->phone,
+            'address' => $this->address,
+            'hospital_id' => $this->hospitalId,
+            'name' => $this->name,
+            'date_of_birth' => $this->birth
+        ],
+        [
+            'hospital_id' => $this->hospitalId,
+            'name' => $this->name,
+            'date_of_birth' => $this->birth,
+            'gender' => 'man',
+            'contact' => $this->phone,
+            'address' => $this->address,
         ]);
-        sleep(2);
-        return true;
+        Appointment::create([
+            'hospital_id' => $this->hospitalId,
+            'patient_id' => $patient->id,
+            'doctor_id' => $this->doctor,
+            'appointment_date' => $date->format('Y-m-d'),
+            'appointment_time' => $date->format('H:i:s'),
+            'reason' => $this->reason,
+        ]);
+
+        session()->flash('status', AlertEnum::Success->value);
+        session()->flash('message', 'You have successfully booked an appointment!');
+
+        return $this->redirectRoute('home');
     }
 
     #[Computed()]
@@ -44,9 +123,9 @@ class PatientAppointment extends Component
 
     public function updated()
     {
-        if ($this->doctorId !== '') {
-            if (!in_array($this->doctorId, array_column($this->doctorSchedule()->toArray(), 'id'))) {
-                $this->doctorId = '';
+        if ($this->doctor !== '') {
+            if (!in_array($this->doctor, array_column($this->doctorSchedule()->toArray(), 'id'))) {
+                $this->doctor = '';
             }
         }
     }

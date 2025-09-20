@@ -153,7 +153,7 @@ class Checkout extends Component
 
         // Reset form or redirect
         return redirect()->intended('/dashboard')->with([
-            'status' => 'success',
+            'status' => AlertEnum::Success->value,
             'message' => 'Order has been successfully created.'
         ]);
     }
