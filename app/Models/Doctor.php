@@ -25,7 +25,7 @@ class Doctor extends Model
     // A doctor works at one hospital.
     public function hospital()
     {
-        return $this->belongsTo(Hospital::class);
+        return $this->belongsTo(Hospital::class, 'hospital_id');
     }
 
     // A doctor has many schedules.
