@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use App\AlertEnum;
+use App\GenderEnum;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
 use DateTime;
+use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
@@ -17,7 +19,7 @@ class PatientAppointment extends Component
     // patients data
     public $name = '';
     public $birth = null;
-    public $gender = '';
+    public $gender = GenderEnum::Man->value;
     public $phone = '';
     public $address = '';
 
@@ -57,6 +59,7 @@ class PatientAppointment extends Component
                     $this->validate([
                         'name' => 'required',
                         'birth' => 'required',
+                        'gender' => ['required', new Enum(GenderEnum::class)],
                         'phone' => 'required',
                         'address' => 'required',
                     ]);
@@ -87,7 +90,7 @@ class PatientAppointment extends Component
             'hospital_id' => $this->hospitalId,
             'name' => $this->name,
             'date_of_birth' => $this->birth,
-            'gender' => 'man',
+            'gender' => 'm',
             'contact' => $this->phone,
             'address' => $this->address,
         ]);
