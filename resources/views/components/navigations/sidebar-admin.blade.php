@@ -145,9 +145,3 @@
     </div>
 </aside>
 
-<script>
-    document.getElementById('logoutButton').addEventListener('click', (event) => {
-        const confirmation = confirm('Logout from this account?');
-        if (!confirmation) event.preventDefault();
-    })
-</script>

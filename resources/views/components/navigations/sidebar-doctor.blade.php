@@ -86,7 +86,7 @@
                 </a>
             </li>
             <li>
-                <a href="/logout"
+                <a href="/logout" id="logoutButton"
                     class="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-red-500 dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 text-gray-800 dark:text-red-500" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\SpecializationEnum;
 use App\UserEnum;
 use Hash;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -113,9 +114,10 @@ class DoctorTable extends Component
         $this->dispatch('close-modal');
 
     }
-    public function render()
-    {
-        $doctors = Doctor::with('user')
+
+    #[Computed(true)]
+    public function doctors() {
+        return Doctor::with('user')
             ->whereHas('user', function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%');
             })
@@ -124,8 +126,10 @@ class DoctorTable extends Component
             ->orderBy('users.name', 'asc')
             ->select('doctors.*') // avoid column conflicts
             ->paginate(20);
-
+    }
+    public function render()
+    {
         $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
-        return view('livewire.admin.doctor-table', compact('doctors', 'specializations'));
+        return view('livewire.admin.doctor-table', compact('specializations'));
     }
 }

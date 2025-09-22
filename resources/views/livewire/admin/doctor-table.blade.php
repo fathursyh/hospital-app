@@ -53,7 +53,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($doctors as $doctor)
+            @foreach ($this->doctors() as $doctor)
                 <tr
                     class="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">

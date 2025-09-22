@@ -35,6 +35,11 @@
             document.removeEventListener('open-modal', show);
             document.removeEventListener('close-modal', hide);
         })
+
+        document.getElementById('logoutButton').addEventListener('click', (event) => {
+            const confirmation = confirm('Logout from this account?');
+            if (!confirmation) event.preventDefault();
+        })
     </script>
 </body>
 
