@@ -11,7 +11,7 @@
 
 <body class="bg-gray-100 dark:bg-gray-900">
     <x-navigations.sidebar-index />
-    <main class="md:ms-64 md:p-8 p-6">
+    <main class="p-6 md:ms-64 md:p-8">
         @yield('content')
     </main>
     @session('status')
@@ -21,6 +21,7 @@
         function show() {
             document.querySelector('dialog').showModal();
         }
+
         function hide() {
             document.querySelector('dialog').close();
         }
