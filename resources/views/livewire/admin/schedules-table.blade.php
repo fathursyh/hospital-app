@@ -1,8 +1,8 @@
-<div class="max-w-screen-xl relative">
+<div class="max-w-screen-xl relative" x-data="{showModal: false}" x-init="$wire.resetForm()">
     @teleport('body')
-        <dialog class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md"
-            @if ($showModal) open @endif x-on:close="$wire.resetForm()">
-            <div wire:click.outside="closeModal">
+        <dialog x-ref="modal" class="modal fixed lg:min-w-md min-w-sm z-40 top-[50%] left-[50%] translate-[-50%] shadow-md"
+            x-show="showModal" x-transition>
+            <div @click.outside="showModal = false; $wire.resetForm(); $refs.modal.close()">
                 @include('components.admin.schedules-form')
             </div>
         </dialog>

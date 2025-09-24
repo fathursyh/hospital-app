@@ -55,6 +55,7 @@ button {
         transform: translateY(30px);
     }
 }
+[x-cloak] { display: none !important; }
 
 .modal {
     border: none;

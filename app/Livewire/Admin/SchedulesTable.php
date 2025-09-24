@@ -18,7 +18,6 @@ class SchedulesTable extends Component
     public $specializationFilter = null;
     #[Url()]
     public $dayFilter = [];
-    public $showModal = false;
     public $editMode = false;
 
     public $doctor;
@@ -30,19 +29,6 @@ class SchedulesTable extends Component
     {
         $this->clearValidation();
         $this->reset();
-    }
-
-    public function openModal($edit = false)
-    {
-        $this->showModal = true;
-        $this->editMode = $edit;
-        $this->dispatch('open-modal');
-    }
-    public function closeModal()
-    {
-        $this->showModal = false;
-        $this->editMode = false;
-        $this->dispatch('close-modal');
     }
 
     public function updateSchedule()
@@ -82,7 +68,9 @@ class SchedulesTable extends Component
     #[Computed(persist: true, seconds: 3600)]
     public function doctorList()
     {
-        return Doctor::with('user:id,name')->get(['id', 'user_id'])->toArray();
+        return Doctor::with('user:id,name')
+            ->where('hospital_id', auth()->user()->hospital->id)
+            ->get(['id', 'user_id'])->toArray();
     }
 
     #[Computed()]
@@ -114,7 +102,7 @@ class SchedulesTable extends Component
 
     public function render()
     {
-            $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
+        $specializations = array_map(fn(SpecializationEnum $type) => $type->value, SpecializationEnum::cases());
 
         return view('livewire.admin.schedules-table', compact(['specializations']));
     }
